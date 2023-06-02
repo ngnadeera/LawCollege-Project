@@ -5,6 +5,7 @@ import MainCaption from "../Inc/MainCaption";
 import "./css/HomeCmp.css";
 import News from "../Inc/Home/News";
 import Welcome1 from "../Inc/Home/Welcome1";
+import Footer from "../Inc/Footer";
 
 
 const HomeCmp = () => {
@@ -25,6 +26,7 @@ const HomeCmp = () => {
    
     <div style={{padding:"90px 0px"}}><Welcome1/></div>
     <div style={{marginTop:"-40px"}}> <News/></div>
+    <div><Footer/></div>
     
     </>
   );

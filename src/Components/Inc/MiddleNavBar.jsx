@@ -31,7 +31,7 @@ const MiddleNavBar = () => {
         </span>
         <span>
           <Nav.Item className='NavItem'>
-            <Nav.Link as={Link} className="Nav" to="/home">Admissions</Nav.Link>
+            <Nav.Link as={Link} className="Nav" to="/New_Student_Registration">Admissions</Nav.Link>
           </Nav.Item>
         </span>
         <span>
