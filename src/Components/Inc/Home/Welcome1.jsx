@@ -21,4 +21,4 @@ export default function Welcome1() {
       </figcaption>
     </figure>
   );
-}
+} 

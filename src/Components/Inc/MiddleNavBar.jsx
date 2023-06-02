@@ -40,6 +40,7 @@ const MiddleNavBar = () => {
             <NavDropdown.Item eventKey="link-2">Link 2</NavDropdown.Item>
           </NavDropdown>
         </span>
+        
         <span style={{marginTop:"-25px"}}>
           <ImageButton />
         </span>

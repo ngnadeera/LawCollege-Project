@@ -34,7 +34,7 @@ const RegCards = () => {
           sm={6}
           sx={{ display: "flex", justifyContent: "flex-end" }}
         >
-            <Link to="./" style={{textDecoration:'none'}}>
+            <Link to="/LLB_Student_SignUp" style={{textDecoration:'none'}}>
           <Card sx={shodowStyle}>
             
             <CardMedia
@@ -62,7 +62,7 @@ const RegCards = () => {
 
 
         <Grid item xs={12} sm={6} sx={{ alignItems: "center" }}>
-        <Link to="./" style={{textDecoration:'none'}}>
+        <Link to="/General_Student_SignUp" style={{textDecoration:'none'}}>
           <Card
            sx={shodowStyle}
           >
@@ -75,16 +75,15 @@ const RegCards = () => {
             
             <CardContent>
               <Typography gutterBottom variant="h5" component="div">
-                Lizard
+                General Applicant LogIn
               </Typography>
               <Typography variant="body2" color="text.secondary">
-                Lizards are a widespread group of squamate reptiles, with over
-                6,000 species, ranging across all continents except Antarctica
+              Register as a general applicant for the Law college entrance exam. Fill out the application form and get registered for the entrance exam.
               </Typography>
             </CardContent>
             <CardActions>
-              <Button size="small">Share</Button>
-              <Button size="small">Learn More</Button>
+              <Button size="small">Sign Up</Button>
+              <Button size="small">Sign In</Button>
             </CardActions>
           </Card>
           </Link>

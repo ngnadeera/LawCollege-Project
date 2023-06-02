@@ -1,7 +1,7 @@
 import React from "react";
-import "./Registration1.css";
-import MiddleNavBar from "../MiddleNavBar";
-import { Container, Row, Col } from "react-bootstrap";
+import "./Header.css";
+import MiddleNavBar from "../../../Inc/MiddleNavBar";
+import { Container, Row } from "react-bootstrap";
 
 const Registration1 = () => {
   return (
@@ -10,9 +10,7 @@ const Registration1 = () => {
         <MiddleNavBar />
         <Container fluid>
           <Row className="justify-content-md-center caption">
-            New Students Registration
-            <br />
-            Portal
+            General Student 
           </Row>
         </Container>
       </div>

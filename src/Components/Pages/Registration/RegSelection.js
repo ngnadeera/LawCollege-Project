@@ -8,12 +8,13 @@ import { Stack } from "@mui/system";
 
 const RegSelction = () => {
   return (
-    
+    <div style={{backgroundColor:"#F3F3FE"}}>
     <Stack gap="5">
         <Registration1/>
         <RegCards />
         <Footer />
     </Stack>
+    </div>
     
   );
 };
