@@ -7,10 +7,11 @@ import {
   Typography,
   CardActions,
   Button,
+  Box,
 } from "@mui/material";
 import { Link } from "react-router-dom";
 
-const shodowStyle = {
+const shadowStyle = {
   maxWidth: 345,
   boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.25)",
   transition: "box-shadow 0.25s ease-in-out",
@@ -22,74 +23,79 @@ const shodowStyle = {
 const RegCards = () => {
   return (
     <div>
-      <Grid
-        container
-        spacing={5}
-        justifyContent="space-between"
-        sx={{ paddingTop: "20px", paddingBottom: "20px" }}
-      >
-        <Grid
-          item
-          xs={12}
-          sm={6}
-          sx={{ display: "flex", justifyContent: "flex-end" }}
-        >
-            <Link to="/LLB_Student_SignUp" style={{textDecoration:'none'}}>
-          <Card sx={shodowStyle}>
-            
-            <CardMedia
-              sx={{ height: 140 }}
-              image="/static/images/cards/contemplative-reptile.jpg"
-              title="LLB and State University Applicant"
-            />
-           
-            <CardContent>
-              <Typography gutterBottom variant="h5" component="div">
-                Card1
-              </Typography>
-              <Typography variant="body2" color="text.secondary">
-                Lizards are a widespread group of squamate reptiles, with over
-                6,000 species, ranging across all continents except Antarctica
-              </Typography>
-            </CardContent>
-            <CardActions>
-              <Button size="small">Share</Button>
-              <Button size="small">Learn More</Button>
-            </CardActions>
-          </Card>
-          </Link>
-        </Grid>
-
-
-        <Grid item xs={12} sm={6} sx={{ alignItems: "center" }}>
-        <Link to="/General_Student_SignUp" style={{textDecoration:'none'}}>
-          <Card
-           sx={shodowStyle}
+      <Box sx={{ paddingTop: "20px", paddingBottom: "20px", justifyContent: "center" }}>
+        <Grid container spacing={5} alignItems="stretch">
+          <Grid
+            item
+            xs={12}
+            sm={6}
+            sx={{
+              display: "flex",
+              justifyContent: "flex-end",
+              marginBottom: "20px",
+              "@media (max-width: 600px)": {
+                justifyContent: "center",
+              },
+            }}
           >
-            
-            <CardMedia
-              sx={{ height: 140 }}
-              image="/static/images/cards/contemplative-reptile.jpg"
-              title="General Applicant"
-            />
-            
-            <CardContent>
-              <Typography gutterBottom variant="h5" component="div">
-                General Applicant LogIn
-              </Typography>
-              <Typography variant="body2" color="text.secondary">
-              Register as a general applicant for the Law college entrance exam. Fill out the application form and get registered for the entrance exam.
-              </Typography>
-            </CardContent>
-            <CardActions>
-              <Button size="small">Sign Up</Button>
-              <Button size="small">Sign In</Button>
-            </CardActions>
-          </Card>
-          </Link>
-        </Grid>
+            <Link to="/Registration/LLBApplicant" style={{ textDecoration: "none" }}>
+              <Card sx={shadowStyle}>
+                <CardMedia
+                  sx={{ height: 140 }}
+                  image="/static/images/cards/contemplative-reptile.jpg"
+                  title="LLB and State University Applicant"
+                />
+                <CardContent>
+                  <Typography gutterBottom variant="h5" component="div">
+                    LLB and State University
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all continents except Antarctica
+                  </Typography>
+                </CardContent>
+                <CardActions>
+                  <Button size="small">Enroll</Button>
+                </CardActions>
+              </Card>
+            </Link>
+          </Grid>
+
+          <Grid
+            item
+            xs={12}
+            sm={6}
+            sx={{
+              display: "flex",
+              justifyContent: "flex-start",
+              "@media (max-width: 600px)": {
+                justifyContent: "center",
+              },
+            }}
+          >
+            <Link to="/Registration/GeneralApplicant" style={{ textDecoration: "none" }}>
+              <Card sx={shadowStyle}>
+                <CardMedia
+                  sx={{ height: 140 }}
+                  image="/static/images/cards/contemplative-reptile.jpg"
+                  title="General Applicant"
+                />
+                <CardContent>
+                  <Typography gutterBottom variant="h5" component="div">
+                    General Applicant
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    Register as a general applicant for the Law college entrance exam. Fill out the application form and get registered for the entrance exam.
+                  </Typography>
+                </CardContent>
+                <CardActions>
+                  <Button size="small">Enroll</Button>
         
-      </Grid>
+                </CardActions>
+              </Card>
+            </Link>
+          </Grid>
+        </Grid>
+      </Box>
     </div>
   );
 };

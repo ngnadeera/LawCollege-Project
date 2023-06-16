@@ -138,7 +138,7 @@ export default function footer() {
             <MDBCol
               lg="4"
               md="6"
-              className="mb-4 mb-md-0 d-flex flex-column align-items-center"
+              className="mb-4 mb-md-0 d-flex flex-column align-items-center d-xs-none"
             >
               <span >
                 <h5 className="text-uppercase mt-4 mb-3">about Us</h5>

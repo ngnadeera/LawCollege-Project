@@ -7,28 +7,30 @@ import News from "../Inc/Home/News";
 import Welcome1 from "../Inc/Home/Welcome1";
 import Footer from "../Inc/Footer";
 
-
 const HomeCmp = () => {
   return (
-    <>
-    <div >
+    <div>
       <div className="slider-container">
         <Slider />
         
-        
-        <div className="middle-nav-container">
+          <div className="middleNavBar">
           <MiddleNavBar />
+          </div>
+          <div className="caption-container">
+          <MainCaption />
         </div>
+        
       </div>
-      
-    </div> 
-    <di><MainCaption /></di>
-   
-    <div style={{padding:"90px 0px"}}><Welcome1/></div>
-    <div style={{marginTop:"-40px"}}> <News/></div>
-    <div><Footer/></div>
-    
-    </>
+      <div style={{ padding: "30px 0px 50px" }}>
+        <Welcome1 />
+      </div>
+      <div style={{ marginTop: "-40px" }}>
+        <News />
+      </div>
+      <div>
+        <Footer />
+      </div>
+    </div>
   );
 };
 

@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -13,9 +13,9 @@ import { CssBaseline } from "@mui/material";
 import { Link } from "react-router-dom";
 
 const styles = {
-  sx: {
-    background: "rgba(66, 66, 67, 0.90)",
-    opacity: "4px",
+  appBar: {
+    backgroundColor: "rgba(66, 66, 67, 0.90)",
+    opacity: 1,
     maxHeight: "50px",
   },
 };
@@ -33,20 +33,28 @@ const NavBar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
 
   const handleOpenNavMenu = (event) => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+
     setAnchorElNav(event.currentTarget);
   };
 
   const handleCloseNavMenu = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+
     setAnchorElNav(null);
   };
 
   return (
     <div>
       <CssBaseline />
-      <AppBar className="customAppBar" position="fixed" sx={styles.sx}>
+      <AppBar position="fixed" style={styles.appBar}>
         <Container maxWidth="xl" position="relative">
           <Toolbar disableGutters position="absolute">
-            <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
+            <Box
+              flexGrow={1}
+              display={{ xs: "flex", md: "none" }}
+              sx={{ marginTop: "-10px" }}
+            >
               <IconButton
                 size="large"
                 aria-label="account of current user"
@@ -54,7 +62,6 @@ const NavBar = () => {
                 aria-haspopup="true"
                 onClick={handleOpenNavMenu}
                 color="inherit"
-                sx={{ marginTop: "-10px" }}
               >
                 <MenuIcon />
               </IconButton>
@@ -81,11 +88,9 @@ const NavBar = () => {
                   <MenuItem key={page} onClick={handleCloseNavMenu}>
                     <Link
                       to={pageRoutes[index]}
-                      style={{ textDecoration: "none" }}
+                      style={{ textDecoration: "none", color: "black" }}
                     >
-                      <Typography textAlign="center" style={{ color: "black" }}>
-                        {page}
-                      </Typography>
+                      <Typography textAlign="center">{page}</Typography>
                     </Link>
                   </MenuItem>
                 ))}
@@ -93,13 +98,11 @@ const NavBar = () => {
             </Box>
 
             <Box
-              sx={{
-                flexGrow: 1,
-                display: { xs: "none", md: "flex" },
-                position: "absolute",
-                top: -9,
-                left: -75,
-              }}
+              flexGrow={1}
+              display={{ xs: "none", md: "flex" }}
+              position="absolute"
+              top={-9}
+              left={-75}
             >
               {pages.map((page, index) => (
                 <Link

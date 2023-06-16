@@ -1,13 +1,15 @@
 import React from "react";
-import GeneralSignUp from './GeneralSignUp'
 import Header from "./Header"
 import Footer from "../../../Inc/Footer";
+import RegistrationForm from "./Cmp/Form";
+import Form from  "./Cmp/Form";
+
 
 const GeneralSignUpPage = () => {
     return (
         <div style={{ backgroundColor: "#F3F3FE" }}>
-            <Header name="General Student"/>
-            <GeneralSignUp/> 
+            <Header/>
+            <Form/>
             <Footer/>
         </div>
     );

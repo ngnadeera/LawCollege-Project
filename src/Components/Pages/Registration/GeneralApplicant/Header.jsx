@@ -9,8 +9,8 @@ const Registration1 = () => {
       <div className="bg">
         <MiddleNavBar />
         <Container fluid>
-          <Row className="justify-content-md-center caption">
-            General Student 
+          <Row className="justify-content-md-center caption mb-5" >
+          General Entrance Examination <br/> Application Form
           </Row>
         </Container>
       </div>

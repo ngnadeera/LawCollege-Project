@@ -7,7 +7,7 @@ export default function Welcome1() {
   return (
     <figure className='text-center mb-0'>
       <MDBTypography blockquote>
-        <p style={{fontFamily:'Lora', fontSize:'42px', fontWeight:'bold', paddingTop:'10px'}}>Welcome</p>
+        <p style={{fontFamily:'Lora', fontSize:'42px', fontWeight:'bold'}}>Welcome</p>
       </MDBTypography>
       <MDBTypography blockquote>
         <p style={{fontFamily:'Lora', fontSize:'20px', paddingTop:'10px', fontWeight:'normal'}}>"Welcome to Law Collage Srilanka, a prestigious institution dedicated to fostering excellence in legal education. <br/>
