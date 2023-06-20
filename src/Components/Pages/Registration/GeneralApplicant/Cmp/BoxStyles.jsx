@@ -1,5 +1,6 @@
 export const boxStyles = {
   display: "flex",
+ 
   flexDirection: "column",
   justifyContent: "flex-end",
   alignItems: "flex-start",
@@ -10,7 +11,8 @@ export const boxStyles = {
   marginTop: "40px",
   marginLeft: "100px",
   marginRight: "100px",
-  marginBottom:"20px"
+  marginBottom:"20px",
+  
 };
 
 // Media query for xs screen size

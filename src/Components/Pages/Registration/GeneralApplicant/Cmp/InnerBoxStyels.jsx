@@ -4,7 +4,7 @@ export const InnerBoxStyles = {
   width:"100%",
     display: "flex",
     flexDirecion:"column",
-    justifyContent: "flex-start",
+    justifyContent: "center",
     alignItems: "center",
     padding:"0px 20px 10px 20px ",
     boxShadow: " -4px -1px 10px 2px rgba(0, 0, 0, 0.11)",

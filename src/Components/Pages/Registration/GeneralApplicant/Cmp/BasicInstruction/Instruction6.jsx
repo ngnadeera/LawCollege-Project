@@ -7,7 +7,7 @@ const Instruction6 = () => {
       
       <p> <b>REJECTION OF APPLICATIONS 
 </b></p>
-<p> Incomplete inaccurate applications and applications of those who do not have the required qualifications will be rejected without prior notice. 
+<p> <p>Incomplete or inaccurate applications, as well as applications from unqualified individuals, will be rejected without prior notice. Late applications will not be accepted. It is important to submit a comprehensive and accurate application within the given deadline. Pay close attention to the guidelines and requirements, providing all necessary information and documents.</p>
 <br/>PLEASE NOTE THAT LATE APPLICATIONS WILL NOT BE ACCEPTED. 
  
  </p>
