@@ -13,6 +13,11 @@ export const step1Validation = Yup.object().shape({
     // checkbox7: Yup.bool().oneOf([true], checkboxerrormessage),
     // checkbox8: Yup.bool().oneOf([true], checkboxerrormessage),
     // namei: Yup.string().required("Name with initials is required"),
-    // nid: Yup.string().required("National Identity Card number is required"),
+    //  nid: Yup.string().required('ID Card Number is Required')
+    // .test('is-valid-id', 'Invalid ID Card number', (value) => {
+    //   const isOldFormat = /^[0-9]{9}[vV]$/.test(value)
+    //   const isNewFormat = /^[0-9]{12}$/.test(value)
+    //   return isOldFormat || isNewFormat;
+    // }),
   });
   
