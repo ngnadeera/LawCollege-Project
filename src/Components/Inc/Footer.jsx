@@ -18,7 +18,7 @@ import LocalPhoneIcon from "@mui/icons-material/LocalPhone";
 import FaxIcon from "@mui/icons-material/Fax";
 import EmailIcon from "@mui/icons-material/Email";
 
-export default function footer() {
+export default function Footer() {
   return (
     <MDBFooter className="text-center" color="white" bgColor="dark">
       <MDBContainer className="p-4">

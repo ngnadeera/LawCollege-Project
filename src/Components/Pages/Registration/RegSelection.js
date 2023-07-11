@@ -2,7 +2,8 @@ import react from "react";
 import Registration1 from "../../Inc/Registration/Registration1";
 import Footer from "../../Inc/Footer";
 import RegCards from "../../Inc/Registration/RegCards";
-import { Stack } from "@mui/system";
+import { Container, Stack } from "@mui/system";
+import Instructions from "../../Inc/Registration/Instructions";
 
 
 
@@ -11,6 +12,7 @@ const RegSelction = () => {
     <div style={{backgroundColor:"#F3F3FE"}}>
     <Stack gap="5">
         <Registration1/>
+        <Instructions/>
         <RegCards />
         <Footer />
     </Stack>

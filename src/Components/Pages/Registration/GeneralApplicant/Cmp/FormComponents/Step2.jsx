@@ -1,15 +1,11 @@
 import React, { useState } from "react";
-import { useFormik } from "formik";
-import { useRef } from "react";
-import axios from 'axios';
+
 
 import * as Yup from "yup";
-import {Checkbox,Button,TextField,Stepper,Step,StepLabel,FormControlLabel,FormGroup,Typography,Box,Grid,Select,MenuItem,FormControl,InputLabel,FormLabel,FormHelperText,RadioGroup,Radio} from "@mui/material";
+import {TextField,FormControlLabel,FormGroup,Typography,Box,Select,MenuItem,FormLabel,FormHelperText,Radio} from "@mui/material";
 
 
 import "../styles/form.css"
-
-
 import { InnerBoxStyles } from "../InnerBoxStyels";
 
 
@@ -21,9 +17,6 @@ import districtsecretariatOptions from "../form_data/districtsecretariat";
 
 
 
-
-
-import { Stack, width } from "@mui/system";
 
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";

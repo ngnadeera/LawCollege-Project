@@ -10,6 +10,8 @@ import {
   Box,
 } from "@mui/material";
 import { Link } from "react-router-dom";
+import LLB from "./Images/LLB.jpg"
+import GEA from "./Images/GEA.avif"
 
 const shadowStyle = {
   maxWidth: 345,
@@ -42,7 +44,7 @@ const RegCards = () => {
               <Card sx={shadowStyle}>
                 <CardMedia
                   sx={{ height: 140 }}
-                  image="/static/images/cards/contemplative-reptile.jpg"
+                  image={LLB}
                   title="LLB and State University Applicant"
                 />
                 <CardContent>
@@ -76,7 +78,7 @@ const RegCards = () => {
               <Card sx={shadowStyle}>
                 <CardMedia
                   sx={{ height: 140 }}
-                  image="/static/images/cards/contemplative-reptile.jpg"
+                  image= {GEA}
                   title="General Applicant"
                 />
                 <CardContent>

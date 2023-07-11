@@ -8,7 +8,7 @@ import Home from '../Pages/Home'
 
 const ImageButton = () => {
   return (
-    <Link to={Home}>
+    <Link to="/">
       <img src={require('./Logo.png')} alt="Logo" className="img-fluid" style={{ position: "relative", width: "100px" }} />
     </Link>
   );

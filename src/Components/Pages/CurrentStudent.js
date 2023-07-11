@@ -1,12 +1,9 @@
 import react from "react";
+import CurrentStudentLogInPage from "../Inc/CurrentStudent/CurrentStudentLogin/CurrentStudentLogInPage";
 
 const CurrentStudent = () => {
   return (
-    <div className="container">
-      <div className="card mt-4">
-        <h1> CurrentStudent page </h1>
-      </div>
-    </div>
+    <CurrentStudentLogInPage/>
   );
 };
 

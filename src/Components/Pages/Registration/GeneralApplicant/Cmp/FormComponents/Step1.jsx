@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useEffect } from "react";
 import { InnerBoxStyles } from "../InnerBoxStyels";
 import { useRef } from "react";
 import Instruction1 from "../BasicInstruction/Instruction1";
@@ -39,6 +40,12 @@ const Step1 = ({formik}) => {
     const [refValue, setRefValue] = useState("");
     const [copyText, setCopyText] = useState("Copy");
     const inputRef = useRef(null);
+
+    useEffect(() => {
+      setRefValue(
+        `GEA ${formik.values.nid.toUpperCase().trimEnd()} ${formik.values.namei.toUpperCase().trimEnd()}`
+      );
+    }, [formik.values.nid, formik.values.namei]);
 
 
     const handleCopyClick = () => {
@@ -408,13 +415,9 @@ const Step1 = ({formik}) => {
                         <TextField
                           name="nid"
                           value={formik.values.nid}
-                          onChange={(e) => {
-                            formik.handleChange(e);
-                            setRefValue(
-                              e.target.value.toUpperCase().trimEnd() +
-                                " " +
-                                formik.values.namei.toUpperCase().trimEnd()
-                            );
+                          onChange={(event) => {
+                            const trimmedValue = event.target.value.trim();
+                            formik.setFieldValue("nid", trimmedValue);
                           }}
                           onBlur={formik.handleBlur}
                           error={
@@ -438,15 +441,8 @@ const Step1 = ({formik}) => {
                         </Typography>
                         <TextField
                           name="namei"
-                          value={formik.values.namei.toUpperCase()}
-                          onChange={(e) => {
-                            formik.handleChange(e);
-                            setRefValue(
-                              formik.values.nid.toUpperCase().trimEnd() +
-                                " " +
-                                e.target.value.toUpperCase().trimEnd()
-                            );
-                          }}
+                          value={formik.values.namei}
+                          onChange={formik.handleChange}
                           onBlur={formik.handleBlur}
 
                           error={
@@ -471,11 +467,13 @@ const Step1 = ({formik}) => {
                           Reference Number:
                         </Typography>
 
+                        {}
+
                         <TextField
                           variant="filled"
                           fullWidth
                           name="ref"
-                          value={"GEA " + refValue}
+                          value={refValue}
                           onChange={formik.handleChange}
                           helperText="GEA/NIC Number/Name with Initials"
                           InputProps={{
@@ -501,6 +499,8 @@ const Step1 = ({formik}) => {
                   </div>
                 </Box>
               </div>
+
+            
 
               {/* checkbox8 */}
 
