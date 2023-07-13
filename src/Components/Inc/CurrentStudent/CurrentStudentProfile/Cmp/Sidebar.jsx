@@ -5,6 +5,7 @@ import { ExpandMore as ExpandMoreIcon, ExpandLess as ExpandLessIcon } from '@mat
 import { Typography } from '@mui/material';
 import RippleAvatar from './RippleAvatar';
 
+
 const useStyles = makeStyles((theme) => ({
   sidebarDrawer: {
     position:'Static',

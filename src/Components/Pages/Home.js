@@ -46,9 +46,12 @@ const Home = () => {
       <Routes>
         <Route path="/" exact element={<HomeCmp/>} />
         <Route path="/Alumni" element={<Alumni />} />
-        <Route path="/CurrentStudent" element={<CurrentStudent />} />
+        <Route
+        path="/CurrentStudent"
+        element={authState ? <CurrentStudentInit /> : <CurrentStudent />}
+      />
         <Route path="/Staff" element={<Staff />} />
-        <Route path="/Unions" element={authState ? <Unions /> : null} />
+        <Route path="/Unions" element={<Unions />} />
         <Route path="/New_Student_Registration" element={<RegSelction/>}/>
         <Route path="/LLB_Student_SignUp" element={<LLBSignUp/>}/>
         <Route path="/General_Student_SignUp" element={<GeneralSignUpPage/>}/>

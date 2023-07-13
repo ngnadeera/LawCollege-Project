@@ -10,6 +10,7 @@ import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import { InnerBoxStyles } from "./InnerBoxStyels";
 import Row from "react-bootstrap/esm/Row";
 import DownloadPDFButton from "./form_data/GeneratePDF";
+import { CircularProgress } from '@mui/material';
 
 
 
@@ -77,6 +78,9 @@ const MultiStepForm = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [isSnackbarOpen, setIsSnackbarOpen] = useState(false);
 
+  const [loading, setLoading] = useState(false);
+
+
   
 
   const handleSnackbarClose = () => {
@@ -98,9 +102,10 @@ const MultiStepForm = () => {
     onSubmit: async (values) => {
       window.scrollTo({ top: 0, behavior: "smooth" });
      
-    
+
       if (activeStep === steps.length - 1) {
 
+        setLoading(true);
 
      
         const boolgender = values.gender === "male" ? true : false;
@@ -302,6 +307,9 @@ const MultiStepForm = () => {
                 LanguageMedium: values.lpaper
               });
 
+              await new Promise((resolve) => setTimeout(resolve, 5000));
+
+
              
                
         const refVal = `GEA ${formik.values.nid.toUpperCase().trimEnd()} ${formik.values.namei.toUpperCase().trimEnd()}`;
@@ -317,7 +325,10 @@ const MultiStepForm = () => {
                 TypeOfPayment: values.paymentType,
                 DateOfPayment: values.paymentDate
 
-              });      
+              });    
+              
+              setLoading(false);
+
           
           setIsSnackbarOpen(true);
 
@@ -383,7 +394,7 @@ const MultiStepForm = () => {
   };
 
 
-  if (!isLoading){
+  if (!isLoading && !loading){
 
     return (
       <div>
@@ -441,6 +452,23 @@ const MultiStepForm = () => {
     );
 
   } else {
+    if (loading){
+      return(
+        <>
+         <Box sx={InnerBoxStyles} style={{margin:"40px"}}>
+          <Container  style={{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        height: '50vh',
+      }}>
+               <CircularProgress />
+
+      </Container>
+       </Box>
+      </>);
+    } else {
     return(
       <div>
         
@@ -488,6 +516,7 @@ const MultiStepForm = () => {
 
       </div>
     )
+            }
   }
 
 };
