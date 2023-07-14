@@ -19,7 +19,7 @@ import {
   FormLabel,
   FormHelperText,
 } from "@mui/material";
-
+import ErrorIcon from '@mui/icons-material/Error';
 
 
 import { InnerBoxStylesStep3 } from "../../../GeneralApplicant/Cmp/InnerBoxStyels";
@@ -37,6 +37,7 @@ const EditRequestForm = () => {
   const [userRef, setUserRef] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [isSnackbarOpen, setIsSnackbarOpen] = useState(false);
+  const [userExist,setUserExist] = useState(false);
 
 
   const handleSnackbarClose = () => {
@@ -70,12 +71,42 @@ const EditRequestForm = () => {
           
         setUserRef(responseRefNumber.data.ReferenceNumber);
 
+        const response = await axios.get(`http://localhost:3001/Applicant_edit_request/${userId}`,
+        {
+          headers: {
+            accessTokenApplicant: localStorage.getItem("accessTokenApplicant"),
+          },
+        }
+        );
+    
+        const applicant = response.data;
+        if (applicant) {
+          setUserExist(true);
+        } else {
+ 
+          setUserExist(false);
+        }
+
       } catch (error) {
         console.error("Error checking user:", error);
       }
     };
 
     fetchUser();
+
+    
+    const checkValueExists = async () => {
+      try {
+        
+      } catch (error) {
+    
+        console.error('Error:', error);
+      }
+    };
+
+    checkValueExists();
+
+
   }, []);
 
   console.log(userRef);
@@ -123,6 +154,7 @@ const EditRequestForm = () => {
 
 
 
+if (!userExist){
 
   return (
     <div>
@@ -401,6 +433,49 @@ const EditRequestForm = () => {
         </Snackbar>
     </div>
   );
+
+} else {
+  return(
+  <div>
+             
+        <Box sx={InnerBoxStyles} style={{margin:"40px"}}>
+         <Container  style={{
+       display: 'flex',
+       flexDirection: 'column',
+       alignItems: 'center',
+       justifyContent: 'center',
+       height: '50vh',
+     }}>
+
+        <ErrorIcon sx={{ fontSize: 55, color: '#cc3300' }} /> 
+ 
+     
+           <Typography
+             style={{
+               fontSize: "25px",
+               color: "rgba(0, 0, 0, 0.7)",
+             }}
+           >
+             
+             Edit Request is Pending...
+            
+             </Typography>
+             <p>You have not yet received edit access</p>
+             <Button variant="contained" onClick={()=>{ navigate('/New_Student_Registration')}}>Go Back</Button>
+             
+
+             
+             </Container>
+        </Box> 
+        
+    
+
+
+
+  </div>
+  );
+}
+ 
 };
 
 export default EditRequestForm;
