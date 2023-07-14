@@ -8,7 +8,7 @@ const GeneralSignUpPage = () => {
         <div style={{ backgroundColor: "#F3F3FE" }}>
             <Header name="General Student"/>
             <GeneralSignUp/> 
-            <Footer/>
+
         </div>
     );
 }

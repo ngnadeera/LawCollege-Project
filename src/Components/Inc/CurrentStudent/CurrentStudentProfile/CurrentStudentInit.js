@@ -2,9 +2,7 @@ import React from 'react';
 import Header from './Cmp/Header.jsx';
 import Sidebar from './Cmp/Sidebar.jsx';
 import Footer from '../../Footer.jsx';
-import NavBar from '../../NavBar.jsx';
 import { useState } from 'react';
-import { positions } from '@mui/system';
 import {  Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from '@mui/material';
 import { Container,Row,Col } from 'react-bootstrap';
 import { AuthContext } from '../../../../helpers/AuthContext.js';
@@ -74,7 +72,7 @@ export const CurrentStudentInit = () => {
         </Col>
         </Row>
         </Container>
-      <Footer />
+<Footer/>
     </div>
     </StylesProvider>
 

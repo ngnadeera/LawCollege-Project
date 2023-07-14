@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import { useFormik } from "formik";
-import { basicSchema } from "../../../Pages/Registration/Schemas";
+import { basicSchema } from "../../Schemas";
 import axios from 'axios'
 import {
   Button,
@@ -15,18 +15,14 @@ import {
   createTheme,
   ThemeProvider,
 } from "@mui/material";
-import { AuthContext  } from "../../../../helpers/AuthContext";
-
+import { AuthContext } from "../../../../../helpers/AuthContext";
 
 
 const defaultTheme = createTheme();
 
-
-
-
 const Login = () => {
 
-  const { setAuthState } = useContext(AuthContext);
+  const { setAuthStateApplicant } = useContext(AuthContext);
 
 
 const navigate = useNavigate();
@@ -36,7 +32,7 @@ const navigate = useNavigate();
 
 
     try {
-       const response = await axios.post('http://localhost:3001/Student_login/login', {
+       const response = await axios.post('http://localhost:3001/Applicant_signup/login', {
         username : values.username,
         password : values.password
       })
@@ -45,9 +41,10 @@ const navigate = useNavigate();
         setError(response.data.error);
       } else {
         setError("");
-        localStorage.setItem("accessToken", response.data)   
-        setAuthState(true)
-        navigate('/CurrentStudent'); 
+        localStorage.setItem("accessTokenApplicant", response.data)   
+        setAuthStateApplicant(true)
+        navigate('/Applicant_Registration'); 
+      
       }
 
     } catch (error) {
@@ -158,12 +155,20 @@ const navigate = useNavigate();
             </Button> 
             
 
-            <Grid container justifyContent="flex-end">
+            <Grid container justifyContent="flex-end" flexDirection={"column"}>
               <Grid item>
                 <Link href="#" variant="body2">
                   Forgot password?
                 </Link>
+                </Grid>
+
+                <Grid>
+               Don't have an account ?   
+                <Link href="/New_Student_Registration" variant="body2">
+                  Sign Up
+                </Link>
               </Grid>
+
             </Grid>
           </Box>
         </Box>

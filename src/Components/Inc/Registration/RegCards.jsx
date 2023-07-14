@@ -74,7 +74,7 @@ const RegCards = () => {
               },
             }}
           >
-            <Link to="/Registration/GeneralApplicant" style={{ textDecoration: "none" }}>
+            <Link to="/Applicant_Registration/Selection/GeneralApplicant" style={{ textDecoration: "none" }}>
               <Card sx={shadowStyle}>
                 <CardMedia
                   sx={{ height: 140 }}

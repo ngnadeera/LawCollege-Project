@@ -1,4 +1,10 @@
 import React, { useEffect, useState } from "react";
+import Header from './Cmp/Header'
+import Footer from '../../../Inc/Footer'
+import EditRequestForm from './Cmp/EditRequestForm/EditRequestForm'
+
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import {
   Dialog,
   DialogTitle,
@@ -7,15 +13,10 @@ import {
   Button,
   Stack,
 } from "@mui/material";
-import Registration1 from "../../Inc/Registration/Registration1";
-import Footer from "../../Inc/Footer";
-import RegCards from "../../Inc/Registration/RegCards";
-import { Container } from "@mui/system";
-import Instructions from "../../Inc/Registration/Instructions";
-import axios from "axios";
-import { useNavigate } from "react-router-dom";
 
-const RegSelction = () => {
+
+export const EditRequest = () => {
+
   const [dialogOpen, setDialogOpen] = useState(false);
   const navigate = useNavigate();
 
@@ -35,7 +36,7 @@ const RegSelction = () => {
 
         const users = response.data;
         const userExists = users.length > 0;
-        if (userExists) {
+        if (!userExists) {
           setDialogOpen(true);
         }
       } catch (error) {
@@ -51,26 +52,23 @@ const RegSelction = () => {
     navigate("/Applicant_Registration");
   };
 
+
   return (
     <div style={{ backgroundColor: "#F3F3FE" }}>
-      <Stack gap="5">
-        <Registration1 />
-        <Instructions />
-        <RegCards />
-        <Footer />
-      </Stack>
+        <Header/>
+        <EditRequestForm/>
+        <Footer/>
 
-      <Dialog open={dialogOpen} onClose={handleDialogClose}>
-        <DialogTitle color="error">You have already been registered.</DialogTitle>
+        <Dialog open={dialogOpen} onClose={handleDialogClose}>
+        <DialogTitle color="error">Please get registered before submitting an Edit Request</DialogTitle>
         <DialogContent>
-          <p>You have already been registered, you are unable to submit another application. If you wish to modify your previously submitted application form, please make an edit request.</p>
+          <p>Please ensure that you have completed the registration process, Once you have successfully registered, you will gain access to the edit request feature.</p>
         </DialogContent>
         <DialogActions>
           <Button color="success" onClick={handleDialogClose}>Understood</Button>
         </DialogActions>
       </Dialog>
-    </div>
-  );
-};
 
-export default RegSelction;
+    </div>
+  )
+}

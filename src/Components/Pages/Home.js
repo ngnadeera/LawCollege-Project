@@ -14,10 +14,18 @@ import GeneralAppRegForm from "./Registration/GeneralApplicant/GeneralAppRegForm
 import { CurrentStudentInit } from "../Inc/CurrentStudent/CurrentStudentProfile/CurrentStudentInit";
 import { AuthContext } from "../../helpers/AuthContext"
 import axios from "axios";
+import Footer from "../Inc/Footer";
+import { ApplicantSignup } from "./Registration/ApplicantSignup/ApplicantSignup";
+import { ApplicantLogin } from "./Registration/ApplicantSignup/ApplicantLogin";
+import { Content } from "./Registration/ApplicantInterface/cmp/Content";
+import { ApplicantInterface } from "./Registration/ApplicantInterface/ApplicantInterface";
+import { EditRequest } from "./Registration/EditRequest/EditRequest";
+
 
 const Home = () => {
 
   const [authState,setAuthState] = useState(false);
+  const [authStateApplicant,setAuthStateApplicant] = useState(false);
 
   useEffect(()=>{
    
@@ -39,8 +47,27 @@ const Home = () => {
     
   }, [])
 
+  useEffect(()=>{
+   
+    axios.get('http://localhost:3001/Applicant_signup/login', {headers: {
+      accessTokenApplicant : localStorage.getItem("accessTokenApplicant")
+    }})
+      .then((response) => {
+        setAuthStateApplicant(true);
+      })
+      .catch((error) => {
+        if (error.response && error.response.status === 400) {
+          setAuthState(false);
+          console.error("Request failed with status code 400");
+        } else {
+          console.error("An error occurred:", error);
+        }
+      });
+    
+  }, [])
+
   return (
-    <AuthContext.Provider value = {{authState, setAuthState}}>
+    <AuthContext.Provider value = {{authState, setAuthState, authStateApplicant, setAuthStateApplicant}}>
     <div>
       <NavBar />
       <Routes>
@@ -52,15 +79,46 @@ const Home = () => {
       />
         <Route path="/Staff" element={<Staff />} />
         <Route path="/Unions" element={<Unions />} />
-        <Route path="/New_Student_Registration" element={<RegSelction/>}/>
+        <Route path="/New_Student_Registration" element={authStateApplicant? <ApplicantInterface /> : <ApplicantSignup/> }/>
         <Route path="/LLB_Student_SignUp" element={<LLBSignUp/>}/>
         <Route path="/General_Student_SignUp" element={<GeneralSignUpPage/>}/>
         <Route path="/GeneralLogInPage" element={<GeneralStudentLogInPage/>}/>
-        <Route path="/Registration/GeneralApplicant" element={<GeneralAppRegForm/>}/>
-        <Route path="/current-student" element={<CurrentStudentInit />} />
+        <Route path="/New_Student_Registration/login" element={<ApplicantLogin />} />
+
+
+        <Route 
+        path="/Applicant_Registration/Selection/GeneralApplicant" 
+        element={authStateApplicant ? <GeneralAppRegForm /> : <ApplicantLogin />}
+        />
+
+        <Route 
+        path="/Applicant_Registration/Edit_Request" 
+        element={authStateApplicant ? <EditRequest /> : <ApplicantLogin />}
+        />
+
+
+    
+
+        <Route
+        path="/Applicant_Registration"
+        element={authStateApplicant ? <ApplicantInterface /> : <ApplicantSignup />}
+      />
+
+      <Route
+        path="/Applicant_Registration/Selection"
+        element={authStateApplicant ? <RegSelction /> : <ApplicantLogin />}
+      />
+
+      <Route
+      path="*" 
+      element={<><h1>404 page not found</h1></>}
+      />
+
+
 
 
       </Routes>
+
     </div>
     </AuthContext.Provider>
   );

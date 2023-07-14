@@ -11,6 +11,7 @@ const GeneralSignUpPage = () => {
             <Header/>
             <Form/>
             <Footer/>
+       
         </div>
     );
 }

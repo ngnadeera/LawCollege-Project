@@ -13,10 +13,6 @@ import DownloadPDFButton from "./form_data/GeneratePDF";
 import { CircularProgress } from '@mui/material';
 
 
-
-
-
-
 import "./styles/form.css";
 import { boxStyles } from "./BoxStyles";
 
@@ -115,7 +111,7 @@ const MultiStepForm = () => {
 
        
         try {
-          const personalDetailsResponse = await axios.post('http://localhost:3001/GEA_personal_details', {
+          const personalDetailsResponse = await axios.post('http://localhost:3001/GEA_personal_details',  {
             Title: values.salutation,
             NIC: values.nid,  //changed this
             NameInFull: values.fullname,
@@ -123,6 +119,12 @@ const MultiStepForm = () => {
             DOB: values.dob,
             CivilStatus: boolcivilStatus,
             SrilankaCitizenship: boolcitizen
+         
+          },
+          {
+            headers: {
+              accessTokenApplicant: localStorage.getItem('accessTokenApplicant')
+            }
           });
           
           const newGEApplicantID = personalDetailsResponse.data.GEApplicantID;
@@ -132,6 +134,11 @@ const MultiStepForm = () => {
             ContactNumberMobile: values.contactnumber,
             ContactNumberResident: values.contactnumber2,
             Email: values.email,
+          },
+          {
+            headers: {
+              accessTokenApplicant: localStorage.getItem('accessTokenApplicant')
+            }
           });
 
           const address = [
@@ -146,6 +153,10 @@ const MultiStepForm = () => {
             Province: values.province,
             DistrictSecretariant: values.districtsecretariat,
             GramaNiladariDivision: values.gramaniladaridivision
+          },{
+            headers: {
+              accessTokenApplicant: localStorage.getItem('accessTokenApplicant')
+            }
           });
 
           if (values.schema !== "none"){
@@ -160,6 +171,11 @@ const MultiStepForm = () => {
             Month: values.monthofAL,
             Medium: values.medium,
             TypeOfEdInstitute: values.educationInstitute
+          },
+          {
+            headers: {
+              accessTokenApplicant: localStorage.getItem('accessTokenApplicant')
+            }
           });
 
           }
@@ -199,7 +215,12 @@ const MultiStepForm = () => {
             SubjectNumber: subjectNumberArr[i],
             Subject: subjectsArr[i],
             Grading: gradingArr[i],
-          });
+          },{
+            headers: {
+              accessTokenApplicant: localStorage.getItem('accessTokenApplicant')
+            }
+          }
+          );
 
             }
 
@@ -223,7 +244,12 @@ const MultiStepForm = () => {
             SubjectNumber: subjectNumberArr[i],
             Subject: subjectsArr[i],
             Grading: gradingArr[i],
-          });
+          },{
+            headers: {
+              accessTokenApplicant: localStorage.getItem('accessTokenApplicant')
+            }
+          }
+          );
 
             }
 
@@ -250,7 +276,12 @@ const MultiStepForm = () => {
               Month: values.monthOfSinhala,
               IndexNo: values.indexSinhala,
               Result: values.gradingSinhala
-            });
+            },{
+              headers: {
+                accessTokenApplicant: localStorage.getItem('accessTokenApplicant')
+              }
+            }
+            );
           }
 
   
@@ -263,20 +294,35 @@ const MultiStepForm = () => {
               Month: values.monthOfTamil,
               IndexNo: values.indexTamil,
               Result: values.gradingTamil
-            });
+            },{
+              headers: {
+                accessTokenApplicant: localStorage.getItem('accessTokenApplicant')
+              }
+            }
+            );
             }
         if (values.convicted === "yes"){
           const convictedResponse = await axios.post('http://localhost:3001/GEA_convicted_offence', {
               GEApplicantID: newGEApplicantID,
               Description: values.convictedDescription
-            });
+            },{
+              headers: {
+                accessTokenApplicant: localStorage.getItem('accessTokenApplicant')
+              }
+            }
+            );
         }
 
         if (values.convictedFine === "yes"){
           const convictedFineResponse = await axios.post('http://localhost:3001/GEA_convicted_fine', {
               GEApplicantID: newGEApplicantID,
               Description: values.convictedFineDescription
-            });
+            },{
+              headers: {
+                accessTokenApplicant: localStorage.getItem('accessTokenApplicant')
+              }
+            }
+            );
         }
 
 
@@ -289,6 +335,10 @@ const MultiStepForm = () => {
               PYear: values.yearOfPreviousSits,
               PIndexNo: values.indexOfPreviouSits,
               PMarksObtained: values.marksPreviousSits
+            },  {
+              headers: {
+                accessTokenApplicant: localStorage.getItem('accessTokenApplicant')
+              }
             });
 
             if(values.yearOfPreviousSits2 != ""){
@@ -297,7 +347,12 @@ const MultiStepForm = () => {
                 PYear: values.yearOfPreviousSits2,
                 PIndexNo: values.indexOfPreviouSits2,
                 PMarksObtained: values.marksPreviousSits2
-              });
+              }, {
+                headers: {
+                  accessTokenApplicant: localStorage.getItem('accessTokenApplicant')
+                }
+              }
+              );
             }
         }
 
@@ -305,9 +360,13 @@ const MultiStepForm = () => {
                 GEApplicantID: newGEApplicantID,
                 GKMedium: values.gkpaper,
                 LanguageMedium: values.lpaper
+              }, {
+                headers: {
+                  accessTokenApplicant: localStorage.getItem('accessTokenApplicant')
+                }
               });
 
-              await new Promise((resolve) => setTimeout(resolve, 5000));
+        // await new Promise((resolve) => setTimeout(resolve, 3000));
 
 
              
@@ -325,7 +384,12 @@ const MultiStepForm = () => {
                 TypeOfPayment: values.paymentType,
                 DateOfPayment: values.paymentDate
 
-              });    
+              },{
+                headers: {
+                  accessTokenApplicant: localStorage.getItem('accessTokenApplicant')
+                }
+              }
+              );    
               
               setLoading(false);
 
@@ -441,7 +505,7 @@ const MultiStepForm = () => {
                 disabled={isLoading}
               >
                 {activeStep === steps.length - 1 ? "Submit" : "Next"}
-              </Button>
+              </Button> 
             </div>
           </form>
         </Box>
@@ -499,12 +563,6 @@ const MultiStepForm = () => {
 
               
               </Container>
-
-              
-
-        
-
-          
          </Box> 
          
       

@@ -514,7 +514,7 @@ const Step4 = ({ formik }) => {
             <hr style={{ margin: "-10px -30px 25px -30px" }} />
           </div>
 
-          {/* previous sit 2 */}
+          {/* payment */}
 
           <Row style={{ marginTop: "20px" }} spacing>
             <Col md={{ span: 3, offset: 1 }} xs={12}>

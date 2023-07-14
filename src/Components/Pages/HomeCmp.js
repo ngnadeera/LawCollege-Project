@@ -27,9 +27,7 @@ const HomeCmp = () => {
       <div style={{ marginTop: "-40px" }}>
         <News />
       </div>
-      <div>
-        <Footer />
-      </div>
+     <Footer/>
     </div>
   );
 };
