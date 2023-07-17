@@ -20,6 +20,7 @@ import {
   FormHelperText,
 } from "@mui/material";
 import ErrorIcon from '@mui/icons-material/Error';
+import Form from "../../EditForm/Cmp/Form"
 
 
 import { InnerBoxStylesStep3 } from "../../../GeneralApplicant/Cmp/InnerBoxStyels";
@@ -27,6 +28,7 @@ import paymentTypeOptions from "../../../GeneralApplicant/Cmp/form_data/paymentT
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/esm/Row";
 import Col from "react-bootstrap/Col";
+import EditForm from "../../EditForm/EditForm";
 
 
 
@@ -38,6 +40,7 @@ const EditRequestForm = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [isSnackbarOpen, setIsSnackbarOpen] = useState(false);
   const [userExist,setUserExist] = useState(false);
+  const [editAccess,setEditAccess] = useState(false);
 
 
   const handleSnackbarClose = () => {
@@ -82,6 +85,11 @@ const EditRequestForm = () => {
         const applicant = response.data;
         if (applicant) {
           setUserExist(true);
+          if (response.data.EditAccess == true){
+              setEditAccess(true)
+          }else {
+            setEditAccess(false)
+          }
         } else {
  
           setUserExist(false);
@@ -435,45 +443,50 @@ if (!userExist){
   );
 
 } else {
-  return(
-  <div>
-             
-        <Box sx={InnerBoxStyles} style={{margin:"40px"}}>
-         <Container  style={{
-       display: 'flex',
-       flexDirection: 'column',
-       alignItems: 'center',
-       justifyContent: 'center',
-       height: '50vh',
-     }}>
-
-        <ErrorIcon sx={{ fontSize: 55, color: '#cc3300' }} /> 
- 
-     
-           <Typography
-             style={{
-               fontSize: "25px",
-               color: "rgba(0, 0, 0, 0.7)",
-             }}
-           >
-             
-             Edit Request is Pending...
-            
-             </Typography>
-             <p>You have not yet received edit access</p>
-             <Button variant="contained" onClick={()=>{ navigate('/New_Student_Registration')}}>Go Back</Button>
-             
-
-             
-             </Container>
-        </Box> 
-        
+    if (editAccess){
+      return(
+        <><Form/></>
+      )
     
-
-
-
-  </div>
-  );
+      
+    }else{
+      return(
+            <div>
+             <Box sx={InnerBoxStyles} style={{margin:"40px"}}>
+              <Container  style={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'center',
+            height: '50vh',
+          }}>
+     
+             <ErrorIcon sx={{ fontSize: 55, color: '#cc3300' }} /> 
+      
+          
+                <Typography
+                  style={{
+                    fontSize: "25px",
+                    color: "rgba(0, 0, 0, 0.7)",
+                  }}
+                >
+                  
+                  Edit Request is Pending...
+                 
+                  </Typography>
+                  <p>You have not yet received edit access</p>
+                  <Button variant="contained" onClick={()=>{ navigate('/New_Student_Registration')}}>Go Back</Button>
+                  
+     
+                  
+                  </Container>
+             </Box> 
+          
+       </div>
+     
+      )
+    }
+  
 }
  
 };
