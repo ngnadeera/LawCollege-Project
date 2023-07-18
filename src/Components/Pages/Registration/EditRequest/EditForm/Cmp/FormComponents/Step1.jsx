@@ -13,15 +13,24 @@ import Instruction8 from "../BasicInstruction/Instruction8";
 
 import {
     Checkbox,
-
+    Button,
     TextField,
-
+    Stepper,
+    Step,
+    StepLabel,
     FormControlLabel,
     FormGroup,
     Typography,
     Box,
     Grid,
-    
+    Select,
+    MenuItem,
+    FormControl,
+    InputLabel,
+    FormLabel,
+    FormHelperText,
+    RadioGroup,
+    Radio
   } from "@mui/material";
 
   import InputAdornment from "@mui/material/InputAdornment";
@@ -37,8 +46,6 @@ const Step1 = ({formik}) => {
         `GEA ${formik.values.nid.toUpperCase().trimEnd()} ${formik.values.namei.toUpperCase().trimEnd()}`
       );
     }, [formik.values.nid, formik.values.namei]);
-
-    
 
 
     const handleCopyClick = () => {

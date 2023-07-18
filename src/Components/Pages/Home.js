@@ -101,7 +101,7 @@ const Home = () => {
 
         <Route
         path="/Applicant_Registration"
-        element={authStateApplicant ? <ApplicantInterface /> : <ApplicantSignup />}
+        element={authStateApplicant ? <ApplicantInterface /> : <ApplicantLogin />}
       />
 
       <Route
