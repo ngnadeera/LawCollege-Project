@@ -1056,7 +1056,7 @@ const convictedDescription = existingConvictedOffence.data;
             const userId1 = responseUserId.data;
 
 
-            await axios.put(`http://localhost:3001/applicant_edit_request/${userId1}`, { EditAccess: false }, {
+            await axios.put(`http://localhost:3001/applicant_edit_request/${userId1}`, { EditAccess: "completed" }, {
               headers: {
                 accessTokenApplicant: localStorage.getItem('accessTokenApplicant')
               }

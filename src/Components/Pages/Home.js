@@ -20,8 +20,8 @@ import { ApplicantLogin } from "./Registration/ApplicantSignup/ApplicantLogin";
 import { Content } from "./Registration/ApplicantInterface/cmp/Content";
 import { ApplicantInterface } from "./Registration/ApplicantInterface/ApplicantInterface";
 import { EditRequest } from "./Registration/EditRequest/EditRequest";
-
-
+import  Instrctions  from "./Registration/ApplicantInterface/cmp/Instructions/cmp/Instruction";
+import Addmission from "./Registration/ApplicantInterface/Addmission/addmission"
 const Home = () => {
 
   const [authState,setAuthState] = useState(false);
@@ -67,59 +67,89 @@ const Home = () => {
   }, [])
 
   return (
-    <AuthContext.Provider value = {{authState, setAuthState, authStateApplicant, setAuthStateApplicant}}>
-    <div>
-      <NavBar />
-      <Routes>
-        <Route path="/" exact element={<HomeCmp/>} />
-        <Route path="/Alumni" element={<Alumni />} />
-        <Route
-        path="/CurrentStudent"
-        element={authState ? <CurrentStudentInit /> : <CurrentStudent />}
-      />
-        <Route path="/Staff" element={<Staff />} />
-        <Route path="/Unions" element={<Unions />} />
-        <Route path="/New_Student_Registration" element={authStateApplicant? <ApplicantInterface /> : <ApplicantSignup/> }/>
-        <Route path="/LLB_Student_SignUp" element={<LLBSignUp/>}/>
-        <Route path="/General_Student_SignUp" element={<GeneralSignUpPage/>}/>
-        <Route path="/GeneralLogInPage" element={<GeneralStudentLogInPage/>}/>
-        <Route path="/New_Student_Registration/login" element={<ApplicantLogin />} />
+    <AuthContext.Provider
+      value={{
+        authState,
+        setAuthState,
+        authStateApplicant,
+        setAuthStateApplicant,
+      }}
+    >
+      <div>
+        <NavBar />
+        <Routes>
+          <Route path="/" exact element={<HomeCmp />} />
+          <Route path="/Alumni" element={<Alumni />} />
+          <Route
+            path="/CurrentStudent"
+            element={authState ? <CurrentStudentInit /> : <CurrentStudent />}
+          />
+          <Route path="/Staff" element={<Staff />} />
+          <Route path="/Unions" element={<Unions />} />
+          <Route
+            path="/New_Student_Registration"
+            element={
+              authStateApplicant ? <ApplicantInterface /> : <ApplicantSignup />
+            }
+          />
+          <Route path="/LLB_Student_SignUp" element={<LLBSignUp />} />
+          <Route
+            path="/General_Student_SignUp"
+            element={<GeneralSignUpPage />}
+          />
+          <Route
+            path="/GeneralLogInPage"
+            element={<GeneralStudentLogInPage />}
+          />
+          <Route
+            path="/New_Student_Registration/login"
+            element={<ApplicantLogin />}
+          />
 
+          <Route
+            path="/Applicant_Registration/Selection/GeneralApplicant"
+            element={
+              authStateApplicant ? <GeneralAppRegForm /> : <ApplicantLogin />
+            }
+          />
 
-        <Route 
-        path="/Applicant_Registration/Selection/GeneralApplicant" 
-        element={authStateApplicant ? <GeneralAppRegForm /> : <ApplicantLogin />}
-        />
+          <Route
+            path="/Applicant_Registration/Edit_Request"
+            element={authStateApplicant ? <EditRequest /> : <ApplicantLogin />}
+          />
 
-        <Route 
-        path="/Applicant_Registration/Edit_Request" 
-        element={authStateApplicant ? <EditRequest /> : <ApplicantLogin />}
-        />
+          <Route
+            path="/Applicant_Registration/Instructions"
+            element={authStateApplicant ? <Instrctions /> : <ApplicantLogin />}
+          />
 
+          <Route
+            path="/Applicant_Registration/Admission/Downloads"
+            element={authStateApplicant ? <Addmission /> : <ApplicantLogin />}
+          />
 
-    
+          <Route
+            path="/Applicant_Registration"
+            element={
+              authStateApplicant ? <ApplicantInterface /> : <ApplicantLogin />
+            }
+          />
 
-        <Route
-        path="/Applicant_Registration"
-        element={authStateApplicant ? <ApplicantInterface /> : <ApplicantLogin />}
-      />
+          <Route
+            path="/Applicant_Registration/Selection"
+            element={authStateApplicant ? <RegSelction /> : <ApplicantLogin />}
+          />
 
-      <Route
-        path="/Applicant_Registration/Selection"
-        element={authStateApplicant ? <RegSelction /> : <ApplicantLogin />}
-      />
-
-      <Route
-      path="*" 
-      element={<><h1>404 page not found</h1></>}
-      />
-
-
-
-
-      </Routes>
-
-    </div>
+          <Route
+            path="*"
+            element={
+              <>
+                <h1>404 page not found</h1>
+              </>
+            }
+          />
+        </Routes>
+      </div>
     </AuthContext.Provider>
   );
 };

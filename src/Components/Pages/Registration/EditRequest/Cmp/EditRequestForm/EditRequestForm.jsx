@@ -7,6 +7,8 @@ import Snackbar from "@mui/material/Snackbar";
 import MuiAlert from "@mui/material/Alert";
 import { InnerBoxStyles } from "../../../GeneralApplicant/Cmp/InnerBoxStyels";
 import { boxStyles } from "../../../GeneralApplicant/Cmp/BoxStyles";
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+
 import {
   Checkbox,
   Button,
@@ -41,6 +43,7 @@ const EditRequestForm = () => {
   const [isSnackbarOpen, setIsSnackbarOpen] = useState(false);
   const [userExist,setUserExist] = useState(false);
   const [editAccess,setEditAccess] = useState(false);
+  const [complete, setComplete] = useState(false);
 
 
   const handleSnackbarClose = () => {
@@ -85,11 +88,14 @@ const EditRequestForm = () => {
         const applicant = response.data;
         if (applicant) {
           setUserExist(true);
-          if (response.data.EditAccess == true){
+          if (response.data.EditAccess === "verified"){
               setEditAccess(true)
-          }else {
+          }else if (response.data.EditAccess === "completed") {
+            setComplete(true);
+          } else {
             setEditAccess(false)
           }
+          
         } else {
  
           setUserExist(false);
@@ -449,7 +455,7 @@ if (!userExist){
       )
     
       
-    }else{
+    }else if (!editAccess && !complete) {
       return(
             <div>
              <Box sx={InnerBoxStyles} style={{margin:"40px"}}>
@@ -484,6 +490,42 @@ if (!userExist){
           
        </div>
      
+      )
+    } else if (complete){
+      return(
+        <div>
+            <Box sx={InnerBoxStyles} style={{margin:"40px"}}>
+              <Container  style={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'center',
+            height: '50vh',
+          }}>
+     
+     <CheckCircleIcon sx={{ fontSize: 55, color: 'green' }} /> 
+      
+          
+                <Typography
+                  style={{
+                    fontSize: "25px",
+                    color: "rgba(0, 0, 0, 0.7)",
+                    marginBottom: "10px"
+                  }}
+                >
+                  
+                  You have successfully fulfilled your editing request    
+
+                  </Typography>
+
+                  <p style={{textAlign:"center"}}> The form has been edited and the amendments have been recorded.<br/> Please check your email to download the PDF.</p>
+                  <Button variant="contained" onClick={()=>{ navigate('/New_Student_Registration')}}>Go Back</Button>
+                  
+     
+                  
+                  </Container>
+             </Box> 
+        </div>
       )
     }
   
