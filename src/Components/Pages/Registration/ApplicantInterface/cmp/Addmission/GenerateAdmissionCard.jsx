@@ -4,6 +4,10 @@ import './AdmissionCard.css';
 import { useParams } from 'react-router-dom';
 import { useReactToPrint } from 'react-to-print';
 import { Box, Grid, Button } from '@mui/material';
+import CancelIcon from '@mui/icons-material/Cancel';
+import { Typography } from '@material-ui/core';
+import { Container } from 'react-bootstrap';
+import { InnerBoxStyles } from '../../../GeneralApplicant/Cmp/InnerBoxStyels';
 
 const AdmissionCard = () => {
   const componentRef = useRef();
@@ -11,27 +15,50 @@ const AdmissionCard = () => {
     content: () => componentRef.current,
     documentTitle: 'Addmission Card'
   });
-  const id = "GEA230004";
+
   const [AdmissionDetails, setAdmissionDetails] = useState({});
   const [ExamTimeDate, setExamTimeDate] = useState({});
   const [indexNo,setIndexNo] = useState();
+  const [userId,setUserId] = useState();
+
 
   useEffect(() => {
-    axios.get(`http://localhost:3001/View_entexmaddmilist/${id}`).then((response) => {
-      setAdmissionDetails(response.data);
+
+    axios.get("http://localhost:3001/GEA_personal_details/userId",
+    {
+      headers: {
+        accessTokenApplicant: localStorage.getItem(
+          "accessTokenApplicant"
+        ),
+      },
+    }
+    ).then((response) =>{ 
+      setUserId(response.data)
     });
 
-    axios.get(`http://localhost:3001/Entrance_exam_admission/${id}`).then((response) => {
-      setIndexNo(response.data.IndexNo);
-    });
+  },[userId])
 
-    
-    axios.get(`http://localhost:3001/Entrance_exam_date_time/1`).then((response) => {
-      setExamTimeDate(response.data);
-    });
-  }, [id]);
+
+  useEffect(() => {
+    if (userId) {
+      axios.get(`http://localhost:3001/View_entexmaddmilist/${userId}`).then((response) => {
+        setAdmissionDetails(response.data);
+      });
+  
+      axios.get(`http://localhost:3001/Entrance_exam_admission/${userId}`).then((response) => {
+        setIndexNo(response.data.IndexNo);
+      });
+  
+      axios.get(`http://localhost:3001/Entrance_exam_date_time/1`).then((response) => {
+        setExamTimeDate(response.data);
+      });
+    }
+  }, [userId]);
+  
 
   return (
+    <>
+    {AdmissionDetails? (
     <div>
 
         <div className="align-center">
@@ -230,6 +257,39 @@ const AdmissionCard = () => {
         </div>
 
     </div>
+    ): (<div>
+
+<Box sx={InnerBoxStyles} style={{margin:"40px"}}>
+          <Container  style={{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        height: '50vh',
+      }}>
+
+         <CancelIcon color='error' sx={{ fontSize: 55}} /> 
+  
+      
+            <Typography
+              style={{
+                fontSize: "25px",
+                color: "rgba(0, 0, 0, 0.7)",
+              }}
+            >
+              
+              Admission Cards has not yet been released.
+             
+              </Typography>
+              <p>Once admission cards been released you can download it from here</p>
+            
+
+              
+              </Container>
+         </Box> 
+
+    </div>)}
+    </>
   );
 };
 

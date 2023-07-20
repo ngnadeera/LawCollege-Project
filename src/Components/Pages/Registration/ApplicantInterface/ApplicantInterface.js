@@ -5,7 +5,7 @@ import Footer from "../../../Inc/Footer";
 
 export const ApplicantInterface = () => {
   return (
-    <div>
+    <div >
       <Header />
       <Content />
       <Footer />

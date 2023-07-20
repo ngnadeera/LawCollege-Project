@@ -11,6 +11,9 @@ import { Button } from '@mui/material';
 import {  Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from '@mui/material';
 import { useState } from 'react';
 import { useNavigate } from "react-router-dom";
+import { Container } from 'react-bootstrap';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 
 const Accordion = styled((props) => (
@@ -74,7 +77,7 @@ const AccordionSummary = styled((props) => (
 ))(({ theme }) => ({
   backgroundColor:
     theme.palette.mode === 'light'
-      ? 'rgba(255, 255, 255, .05)'
+      ? 'rgba(255, 255, 255, .02)'
       : 'rgba(0, 0, 0, .03)',
   flexDirection: 'row-reverse',
   '& .MuiAccordionSummary-expandIconWrapper.Mui-expanded': {
@@ -119,9 +122,22 @@ const handleAdmission = () => {
 navigate('/Applicant_Registration/Admission/Downloads')
 }
 
+const handleExamResults = () => {
+  window.scrollTo({ top: 0, behavior: "smooth" });
+
+navigate('/Applicant_Registration/Admission/Entrance_Exam_Results')
+}
+
+const handleApplicationStatus = () => {
+  window.scrollTo({ top: 0, behavior: "smooth" });
+
+navigate('/Applicant_Registration/Admission/Application_Status')
+}
+
 const navigate = useNavigate();
 
   return (
+    <div>
     <div style={ {boxShadow: "2px 4px 23px -12px rgba(0,0,0,0.76)"}}>
       <Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
         <AccordionSummary aria-controls="panel1d-content" id="panel1d-header">
@@ -129,12 +145,9 @@ const navigate = useNavigate();
         </AccordionSummary>
         <AccordionDetails>
           <Typography style={{marginBottom:"20px"}}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-            malesuada lacus ex, sit amet blandit leo lobortis eget. Lorem ipsum dolor
-            sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
-            sit amet blandit leo lobortis eget.
+          Following the instructions, you can register as a General applicant, LLB applicant, or State University applicant through the portal.We kindly invite you to carefully peruse and adhere to the following instructions, as they will guide you through a seamless and efficient application process.
           </Typography>
-          <Button variant="contained" onClick={handleInstruction}>Instructions</Button>
+          <Button size='small' variant="contained" onClick={handleInstruction}>Instructions</Button>
         </AccordionDetails>
       </Accordion>
       <Accordion expanded={expanded === 'panel2'} onChange={handleChange('panel2')}>
@@ -143,12 +156,9 @@ const navigate = useNavigate();
         </AccordionSummary>
         <AccordionDetails>
           <Typography style={{marginBottom:"20px"}}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-            malesuada lacus ex, sit amet blandit leo lobortis eget. Lorem ipsum dolor
-            sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
-            sit amet blandit leo lobortis eget.
+          Thoroughly navigate through the application process and diligently complete the application form to the best of your knowledge, ensuring all information provided is accurate and up-to-date.Additionally, please be aware that you will have only one opportunity to edit your application form. Therefore, it is crucial to review all details meticulously before submitting the final version.
           </Typography>
-          <Button variant="contained" onClick={handleRegistration}>Registration</Button>
+          <Button size='small' variant="contained" onClick={handleRegistration}>Registration</Button>
         </AccordionDetails>
       </Accordion>
       <Accordion expanded={expanded === 'panel3'} onChange={handleChange('panel3')}>
@@ -157,12 +167,9 @@ const navigate = useNavigate();
         </AccordionSummary>
         <AccordionDetails>
           <Typography style={{marginBottom:"20px"}}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-            malesuada lacus ex, sit amet blandit leo lobortis eget. Lorem ipsum dolor
-            sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
-            sit amet blandit leo lobortis eget.
+          You have the option to edit your application form by submitting an edit request along with necessary payments. Once granted with edit access, you can easily view the already submitted application form below. After reviewing, you may make any necessary changes and submit the amended application form. Please note that you will have only one opportunity to access the edit feature, so it's essential to carefully review and finalize your application before proceeding
           </Typography>
-          <Button variant="contained" onClick={handlEditRequest}>Edit request</Button>
+          <Button size='small' variant="contained" onClick={handlEditRequest}>Edit request</Button>
 
         </AccordionDetails>
       </Accordion>
@@ -171,12 +178,10 @@ const navigate = useNavigate();
           <Typography>APPLICATION STATUS</Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-            malesuada lacus ex, sit amet blandit leo lobortis eget. Lorem ipsum dolor
-            sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
-            sit amet blandit leo lobortis eget.
+          <Typography style={{marginBottom:"20px"}}>
+          You can view your application status from here. Please note that it may take some time for applications and payments to be verified. Once everything has been processed and released, you can check your status here
           </Typography>
+          <Button size='small' variant="contained" onClick={handleApplicationStatus}>View Status</Button>
         </AccordionDetails>
       </Accordion>
 
@@ -187,12 +192,9 @@ const navigate = useNavigate();
         </AccordionSummary>
         <AccordionDetails>
           <Typography style={{marginBottom:"20px"}}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-            malesuada lacus ex, sit amet blandit leo lobortis eget. Lorem ipsum dolor
-            sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
-            sit amet blandit leo lobortis eget.
+          After verifying your eligibility to take the entrance exam, you will be able to download your admission card from here. It is essential to note that you must print this admission card and ensure you bring both the admission card and signature form to the examination hall on the day of the exam. These documents are mandatory for entry, and failure to present them may result in disqualification from the examination.
           </Typography>
-          <Button variant="contained" onClick={handleAdmission}>Download</Button>
+          <Button size='small' variant="contained" onClick={handleAdmission}>Download</Button>
         </AccordionDetails>
       </Accordion>
 
@@ -202,12 +204,10 @@ const navigate = useNavigate();
           <Typography>EXAM RESULTS</Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-            malesuada lacus ex, sit amet blandit leo lobortis eget. Lorem ipsum dolor
-            sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
-            sit amet blandit leo lobortis eget.
+          <Typography style={{marginBottom:"20px"}}>
+          Upon the release of entrance exam results, you can view them here. Please note that this web copy does not serve as proof of your enrollment as an internal student of the law college. Printed pages of this information are not considered official documentation for enrollment status.
           </Typography>
+          <Button size='small' variant="contained" onClick={handleExamResults}>Exam Results</Button>
         </AccordionDetails>
       </Accordion>
       <Accordion expanded={expanded === 'panel7'} onChange={handleChange('panel7')}>
@@ -221,6 +221,21 @@ const navigate = useNavigate();
           <Logout/>
         </AccordionDetails>
       </Accordion>
+
+     
+    </div>
+
+   <Container>
+    <Row>
+      <Col>
+   <p  style={{
+                fontSize: "15px",
+                color: "rgba(0, 0, 0, 0.7)",
+                marginTop:"30px",
+                marginBottom:"-40px"
+              }}><i> Please note that this web copy does not serve as proof of your enrollment as an internal student of the law college.Other than the Admission card printed pages of this information are not considered official documentation for enrollment status. </i></p>
+     </Col> </Row>
+       </Container>   
     </div>
   );
 }

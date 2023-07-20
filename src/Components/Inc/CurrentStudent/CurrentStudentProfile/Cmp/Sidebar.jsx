@@ -60,7 +60,7 @@ const Sidebar = () => {
       label: 'My Profile',
       link: '#',
       subMenuItems: [
-        { label: 'View My Profile', link: '#' },
+        { label: 'View My Profile', link: '/CurrentStudent/ViewProfile' },
         { label: 'Change Password', link: '#' },
         { label: 'Account Settings', link: '#' },
         

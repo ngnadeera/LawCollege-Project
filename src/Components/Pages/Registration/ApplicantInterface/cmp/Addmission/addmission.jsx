@@ -1,6 +1,6 @@
 import React from 'react'
-import Header from '../../ApplicantInterface/cmp/Header'
-import Footer from '../../../../Inc/Footer'
+import Header from '../Header'
+import Footer from '../../../../../Inc/Footer'
 import GenerateAdmissionCard from './GenerateAdmissionCard'
 
 const Admission = () => {
@@ -9,9 +9,7 @@ const Admission = () => {
 
       
         <Header/>
-
         <GenerateAdmissionCard/> 
-
          <Footer/> 
       
     </div>

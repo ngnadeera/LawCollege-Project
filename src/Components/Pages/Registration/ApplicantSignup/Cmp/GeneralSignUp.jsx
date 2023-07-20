@@ -73,19 +73,27 @@ const handleSubmit = async (values) => {
         <CssBaseline />
         <Box
           sx={{
+            padding: "20px 20px 20px 20px",
+            marginleft:"10px",
             marginTop: 2,
             marginBottom: 5,
             display: "flex",
+            width:"430px",
             flexDirection: "column",
             alignItems: "center",
-            border: "1px solid #ccc",
-            borderRadius: "10px",
-            padding: "1rem",
-            boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.1)",
+            borderRadius: "20px",
+            boxShadow: "1px 2px 7px rgba(0, 0, 0, 0.3)",
           }}
         >
-          <Typography component="h1" variant="h5" sx={{ fontFamily: "lora" }}>
-            Sign up
+          <Typography
+            component="h1"
+            sx={{
+              fontFamily: "lora",
+              fontSize: "35px",
+              color: "rgba(0, 0, 0, 0.7)",
+            }}
+          >
+           <b>Sign up </b> 
           </Typography>
           <Box component="form" onSubmit={formik.handleSubmit} sx={{ mt: 3 }}>
             <Grid container spacing={2}>
@@ -184,7 +192,12 @@ const handleSubmit = async (values) => {
               type="submit"
               fullWidth
               variant="contained"
-              sx={{ mt: 3, mb: 2 }}
+              sx={{ mt: 3, mb: 2 ,
+                backgroundColor: "#CBB58B",
+                color: "#FFFFFF",
+                "&:hover": {
+                  backgroundColor: "#A68C6B",
+                },}}
               disabled={formik.isSubmitting}
               onBlur={() => document.activeElement.blur()} 
             >
