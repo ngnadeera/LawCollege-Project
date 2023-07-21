@@ -25,6 +25,8 @@ import Addmission from "./Registration/ApplicantInterface/cmp/Addmission/addmiss
 import ExamresultPage from "./Registration/ApplicantInterface/cmp/ExamResults/ExamresultPage";
 import ApplicationStatusPage from "./Registration/ApplicantInterface/cmp/ApplicationStatus/ApplicationStatusPage";
 import Profile from "../Inc/CurrentStudent/CurrentStudentProfile/ViewProfile/Profile";
+import ChangePassword from "../Inc/CurrentStudent/CurrentStudentProfile/Cmp/ChangePassword/ChangePassword";
+
 
 const Home = () => {
   const [authState, setAuthState] = useState(false);
@@ -50,26 +52,8 @@ const Home = () => {
         }
       });
 
+  }, [authState]);
 
-
-      axios
-      .get("http://localhost:3001/Applicant_signup/login", {
-        headers: {
-          accessTokenApplicant: localStorage.getItem("accessTokenApplicant"),
-        },
-      })
-      .then((response) => {
-        setAuthStateApplicant(true);
-      })
-      .catch((error) => {
-        if (error.response && error.response.status === 400) {
-          setAuthState(false);
-          console.error("Request failed with status code 400");
-        } else {
-          console.error("An error occurred:", error);
-        }
-      });
-  }, []);
 
   useEffect(() => {
     axios
@@ -83,7 +67,7 @@ const Home = () => {
       })
       .catch((error) => {
         if (error.response && error.response.status === 400) {
-          setAuthState(false);
+          setAuthStateApplicant(false);
           console.error("Request failed with status code 400");
         } else {
           console.error("An error occurred:", error);
@@ -91,7 +75,6 @@ const Home = () => {
       });
   }, []);
 
- console.log("authStsate", authState);
 
 
   return (
@@ -120,6 +103,12 @@ const Home = () => {
             path="/CurrentStudent/ViewProfile"
             element={authState ? <Profile /> : <CurrentStudent />}
           />
+
+          <Route
+            path="/CurrentStudent/ChangePassword"
+            element={authState ? <ChangePassword /> : <CurrentStudent />}
+          />
+
 
 
           <Route path="/Staff" element={<Staff />} />

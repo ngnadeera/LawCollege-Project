@@ -58,7 +58,7 @@ const AdmissionCard = () => {
 
   return (
     <>
-    {AdmissionDetails? (
+    {AdmissionDetails || userId? (
     <div>
 
         <div className="align-center">

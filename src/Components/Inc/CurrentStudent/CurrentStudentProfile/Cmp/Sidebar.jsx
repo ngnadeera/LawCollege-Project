@@ -12,7 +12,7 @@ const useStyles = makeStyles((theme) => ({
 
     width: 300,
     flexShrink: 1,
-    height: 800,
+    height: 600,
     overflowY: 'auto',
     marginLeft:40,
    
@@ -61,7 +61,7 @@ const Sidebar = () => {
       link: '#',
       subMenuItems: [
         { label: 'View My Profile', link: '/CurrentStudent/ViewProfile' },
-        { label: 'Change Password', link: '#' },
+        { label: 'Change Password', link: '/CurrentStudent/ChangePassword' },
         { label: 'Account Settings', link: '#' },
         
       ],
