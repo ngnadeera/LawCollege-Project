@@ -44,6 +44,7 @@ const AdmissionCard = () => {
       axios.get(`http://localhost:3001/View_entexmaddmilist/${userId}`).then((response) => {
         setAdmissionDetails(response.data);
       });
+      
   
       axios.get(`http://localhost:3001/Entrance_exam_admission/${userId}`).then((response) => {
         setIndexNo(response.data.IndexNo);
@@ -55,10 +56,12 @@ const AdmissionCard = () => {
     }
   }, [userId]);
   
+  const isAdmissionDetailsEmpty = Object.keys(AdmissionDetails).length === 0;
+
 
   return (
     <>
-    {AdmissionDetails || userId? (
+    {!isAdmissionDetailsEmpty  ?  (
     <div>
 
         <div className="align-center">

@@ -8,25 +8,51 @@ import Footer from "../../../../Footer";
 import Sidebar from "../Sidebar";
 import { Typography } from "@mui/material";
 import ChangePasswordForm from "./ChangePasswordForm";
-import { ChangeHistory } from "@material-ui/icons";
+import Breadcrumbs from '@mui/material/Breadcrumbs';
+import Link from '@mui/material/Link';
+import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 
 const ChangePassword = () => {
+
+  const breadcrumbLinks = [
+    { label: 'Home', href: '/' },
+    { label: 'Profile', href: '/CurrentStudent/ViewProfile' },
+    { label: 'Change Password', href: '/CurrentStudent/ChangePassword' }
+  ];
+
   return (
     <>
       <StylesProvider injectFirst>
         <div>
           <Header />
+
+          <Breadcrumbs
+            separator={<NavigateNextIcon fontSize="small" />}
+            aria-label="breadcrumb"
+            sx={{ marginLeft: '340px', marginTop: '10px' }}
+          >
+            {breadcrumbLinks.map((link, index) => (
+              <Link
+                key={index}
+                href={link.href}
+                underline="hover"
+                color={index === breadcrumbLinks.length - 1 ? 'text.primary' : 'inherit'}
+              >
+                {link.label}
+              </Link>
+            ))}
+          </Breadcrumbs>
           <Container fluid >
             <Row>
               <Col md={{ span: 3 }}>
                 <Sidebar />
               </Col>
-              <Col >
+              <Col md={{ span: 7 }}>
               <Container className="d-flex justify-content-center align-items-center" >
                 <Row >
 
               <Col
-                // className="d-flex justify-content-center"
+               
               >
                
                 <ChangePasswordForm />

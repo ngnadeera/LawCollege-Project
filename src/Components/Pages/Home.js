@@ -26,7 +26,8 @@ import ExamresultPage from "./Registration/ApplicantInterface/cmp/ExamResults/Ex
 import ApplicationStatusPage from "./Registration/ApplicantInterface/cmp/ApplicationStatus/ApplicationStatusPage";
 import Profile from "../Inc/CurrentStudent/CurrentStudentProfile/ViewProfile/Profile";
 import ChangePassword from "../Inc/CurrentStudent/CurrentStudentProfile/Cmp/ChangePassword/ChangePassword";
-
+import NoticeBoardPage from "./NoticeBoard/NoticeBoardPage";
+import NoticeDetails from "./NoticeBoard/NoticeDetails";
 
 const Home = () => {
   const [authState, setAuthState] = useState(false);
@@ -91,12 +92,13 @@ const Home = () => {
         <Routes>
           <Route path="/" exact element={<HomeCmp />} />
           <Route path="/Alumni" element={<Alumni />} />
+          <Route path="/NoticeBoard" element={<NoticeBoardPage/>}/>
 
           {/* //Current Student Routes */}
-
+          <Route path="/NoticeBoard/Notice/:NoticeID" element={<NoticeDetails/>} />
           <Route
             path="/CurrentStudent"
-            element={authState ? <CurrentStudentInit /> : <CurrentStudent />}
+            element={authState ? <Profile /> : <CurrentStudent />}
           />
 
           <Route

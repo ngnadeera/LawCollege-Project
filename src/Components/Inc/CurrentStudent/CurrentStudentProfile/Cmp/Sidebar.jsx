@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Drawer, List, ListItem, ListItemIcon, ListItemText, Collapse } from '@material-ui/core';
 import { ExpandMore as ExpandMoreIcon, ExpandLess as ExpandLessIcon } from '@material-ui/icons';
 import { Typography } from '@mui/material';
 import RippleAvatar from './RippleAvatar';
-
+import { storage } from '../../../FireBase/firebase';
+import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import axios from 'axios';
 
 const useStyles = makeStyles((theme) => ({
   sidebarDrawer: {
@@ -33,9 +35,42 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const studentId = "200000t3"
+
 const Sidebar = () => {
   const classes = useStyles();
   const [open, setOpen] = useState(null);
+  const [imageUrl, setImageUrl] = useState('');
+  const [userId,setUserId] = useState();
+
+  useEffect(() => {
+    axios.get('http://localhost:3001/Student_login/userId',{
+      headers: {
+        accessToken: localStorage.getItem("accessToken"),
+      }
+    })
+      .then(response => {
+        setUserId(response.data);
+        
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }, []); 
+
+
+  useEffect(() => {
+    // Fetch the image URL from Firebase Storage
+    const imageRef = ref(storage, `ProfilePictures/${userId}/image`);
+    getDownloadURL(imageRef)
+      .then((url) => {
+        setImageUrl(url);
+      })
+      .catch((error) => {
+        console.log('Error getting the image URL:', error.message);
+      });
+  }, [userId]);
+
 
   const handleClick = (index) => {
     setOpen((prevOpen) => (prevOpen === index ? null : index));
@@ -96,8 +131,8 @@ const Sidebar = () => {
 
   return (
     <div>
-      <div style={{marginLeft:"30px",marginTop:"-190px" ,marginBottom:"20px", position:"absolute"}} >
-      <RippleAvatar src="https://img.freepik.com/free-photo/portrait-beautiful-young-woman-standing-grey-wall_231208-10760.jpg?w=996&t=st=1689002491~exp=1689003091~hmac=ce85659bd7e9d1376ac4d0445a8ac841cbee7773a76d084a3a15cccf84778ab9" alt="Avatar" size={140} />
+      <div style={{marginLeft:"30px",marginTop:"-210px" ,marginBottom:"20px", position:"absolute"}} >
+      <RippleAvatar src={imageUrl}  alt="Avatar" size={140} />
       </div>
       <Typography style={{marginLeft:"55px", fontSize:"25px", marginBottom:"-60px",marginTop:"80px"}}><b>Sections</b></Typography>
     <div className={classes.sidebarDrawer}>

@@ -264,6 +264,11 @@ const MultiStepForm = () => {
               Month: values.monthOfEnglish,
               IndexNo: values.indexEnglish,
               Result: values.gradingEnglish
+            },
+            {
+              headers: {
+                accessTokenApplicant: localStorage.getItem('accessTokenApplicant')
+              }
             });
           }
   

@@ -37,7 +37,7 @@ const Logout = () => {
 
   return (
     <>
-      <Button onClick={handleLogout}>Logout</Button>
+      <Button variant="outlined" onClick={handleLogout}>Logout</Button>
       <Dialog open={open} onClose={handleClose}>
         <DialogTitle>Confirmation</DialogTitle>
         <DialogContent>

@@ -84,13 +84,15 @@ const ExamResults = () => {
 
 
 
+  const isentranceExamResultsempty = Object.keys(entranceExamResults).length === 0;
+
 
 
 
   return (
     <>
 
-    {entranceExamResults? (<div>
+    {!isentranceExamResultsempty? (<div>
       <Box style={boxStyles}>
         <Container>
           <Row>

@@ -3,7 +3,7 @@ import Slider from "../Inc/Slider";
 import MiddleNavBar from "../Inc/MiddleNavBar";
 import MainCaption from "../Inc/MainCaption";
 import "./css/HomeCmp.css";
-import News from "../Inc/Home/News";
+import News from "../Inc/Home/Notices/News";
 import Welcome1 from "../Inc/Home/Welcome1";
 import Footer from "../Inc/Footer";
 
@@ -26,8 +26,9 @@ const HomeCmp = () => {
       </div>
       <div style={{ marginTop: "-40px" }}>
         <News />
-      </div>
-     <Footer/>
+      </div >
+      <div style={{marginTop:"70px"}}><Footer/></div>
+     
     </div>
   );
 };
