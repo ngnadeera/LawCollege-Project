@@ -37,7 +37,7 @@ const navigate = useNavigate();
 
     try {
        const response = await axios.post('http://localhost:3001/Student_login/login', {
-        username : values.username,
+        RegNo : values.username,
         password : values.password
       })
 

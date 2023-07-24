@@ -6,6 +6,7 @@ import "./css/HomeCmp.css";
 import News from "../Inc/Home/Notices/News";
 import Welcome1 from "../Inc/Home/Welcome1";
 import Footer from "../Inc/Footer";
+import Links from "../Inc/Home/Links/Links";
 
 const HomeCmp = () => {
   return (
@@ -24,7 +25,10 @@ const HomeCmp = () => {
       <div style={{ padding: "30px 0px 50px" }}>
         <Welcome1 />
       </div>
-      <div style={{ marginTop: "-40px" }}>
+      <div style={{ marginBottom: "40px", marginTop:"20px" }}>
+        <Links/>
+      </div>
+      <div style={{ marginTop: "70px" }}>
         <News />
       </div >
       <div style={{marginTop:"70px"}}><Footer/></div>

@@ -38,6 +38,10 @@ const NoticeBoard = () => {
     return date.toLocaleString("en-GB", { day: "numeric", month: "short" });
   };
 
+  const reversedNoticesList = [...noticesList].reverse();
+  console.log(reversedNoticesList)
+
+
   return (
     <div>
       <Container fluid>
@@ -53,7 +57,7 @@ const NoticeBoard = () => {
         </Row>
 
         <Row style={{ padding: "100px"}}>
-          {noticesList.map((notice) => (
+          {reversedNoticesList.map((notice) => (
             <Col md={{span:3}}  key={notice.NoticeID} style={{marginBottom:"70px"}}>
               <Link to={`/NoticeBoard/Notice/${notice.NoticeID}`} style={{ textDecoration: 'none' }}>
                 <Card className="card-container" sx={{ maxWidth: 345, height: "100%" }}>
