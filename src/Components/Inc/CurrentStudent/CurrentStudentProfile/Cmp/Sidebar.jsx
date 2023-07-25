@@ -43,6 +43,8 @@ const Sidebar = () => {
   const [imageUrl, setImageUrl] = useState('');
   const [userId,setUserId] = useState();
 
+
+
   useEffect(() => {
     axios.get('http://localhost:3001/Student_login/userId',{
       headers: {
@@ -59,16 +61,20 @@ const Sidebar = () => {
   }, []); 
 
 
+
   useEffect(() => {
     // Fetch the image URL from Firebase Storage
-    const imageRef = ref(storage, `ProfilePictures/${userId}/image`);
-    getDownloadURL(imageRef)
-      .then((url) => {
-        setImageUrl(url);
-      })
-      .catch((error) => {
-        console.log('Error getting the image URL:', error.message);
-      });
+    if (userId){
+      const imageRef = ref(storage, `ProfilePictures/${userId}/image`);
+      getDownloadURL(imageRef)
+        .then((url) => {
+          setImageUrl(url);
+        })
+        .catch((error) => {
+          console.log('Error getting the image URL:');
+        });
+    }
+    
   }, [userId]);
 
 
@@ -104,7 +110,9 @@ const Sidebar = () => {
     {
       label: 'Lecture Registration',
       link: '#',
-      subMenuItems: [],
+      subMenuItems: [
+        { label: 'Registration', link: '/CurrentStudent/LectureRegistration' },
+      ],
     },
     {
       label: 'Exam Registration',

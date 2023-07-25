@@ -30,6 +30,7 @@ import NoticeBoardPage from "./NoticeBoard/NoticeBoardPage";
 import NoticeDetails from "./NoticeBoard/NoticeDetails";
 import Courses from "./SubPages/Courses/Courses";
 import Curriculum from "./SubPages/Curriculum/Curriculum";
+import LectureRegistration from "../Inc/CurrentStudent/CurrentStudentProfile/Cmp/LectureRegistration/LectureRegistration";
 
 const Home = () => {
   const [authState, setAuthState] = useState(false);
@@ -114,6 +115,11 @@ const Home = () => {
           <Route
             path="/CurrentStudent/ChangePassword"
             element={authState ? <ChangePassword /> : <CurrentStudent />}
+          />
+
+          <Route
+            path="/CurrentStudent/LectureRegistration"
+            element={authState ? <LectureRegistration /> : <CurrentStudent />}
           />
 
 
