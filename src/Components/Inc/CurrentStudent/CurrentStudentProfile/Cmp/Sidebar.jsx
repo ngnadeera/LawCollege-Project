@@ -111,13 +111,18 @@ const Sidebar = () => {
       label: 'Lecture Registration',
       link: '#',
       subMenuItems: [
+        { label: 'Instructions', link: '/CurrentStudent/LectureRegistration/Instructions' },
         { label: 'Registration', link: '/CurrentStudent/LectureRegistration' },
       ],
     },
     {
       label: 'Exam Registration',
       link: '#',
-      subMenuItems: [],
+      subMenuItems: [
+        { label: 'Registration', link: '/CurrentStudent/ExamRegistration' },
+        { label: 'Exam Withdrawal', link: '/CurrentStudent/ExamWithdrawal' },
+        { label: 'Exam Medicals', link: '/CurrentStudent/ExamMedicals' },
+      ],
     },
     {
       label: 'Exam Results',

@@ -22,6 +22,7 @@ const LectureRegistration = () => {
     const breadcrumbLinks = [
         { label: "Home", href: "/" },
         { label: "Profile", href: "/CurrentStudent/ViewProfile" },
+        { label: "Lecture Registration", href: "/CurrentStudent/LectureRegistration" },
         
       ];
 

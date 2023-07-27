@@ -31,6 +31,7 @@ import NoticeDetails from "./NoticeBoard/NoticeDetails";
 import Courses from "./SubPages/Courses/Courses";
 import Curriculum from "./SubPages/Curriculum/Curriculum";
 import LectureRegistration from "../Inc/CurrentStudent/CurrentStudentProfile/Cmp/LectureRegistration/LectureRegistration";
+import ExamRegistration from "../Inc/CurrentStudent/CurrentStudentProfile/Cmp/ExamRegistration/ExamRegistration";
 
 const Home = () => {
   const [authState, setAuthState] = useState(false);
@@ -120,6 +121,11 @@ const Home = () => {
           <Route
             path="/CurrentStudent/LectureRegistration"
             element={authState ? <LectureRegistration /> : <CurrentStudent />}
+          />
+
+          <Route
+            path="/CurrentStudent/ExamRegistration"
+            element={authState ? <ExamRegistration /> : <CurrentStudent />}
           />
 
 
