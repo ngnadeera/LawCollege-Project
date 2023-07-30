@@ -3,9 +3,6 @@ import { getAnalytics } from "firebase/analytics";
 import { getStorage } from "firebase/storage";
 
 
-
-
-
 const firebaseConfig = {
   apiKey: "AIzaSyA_PUA3XF8DCF1pkZ5eedtIVpv4fjmayi8",
   authDomain: "profilleuploaderforlawcollege.firebaseapp.com",

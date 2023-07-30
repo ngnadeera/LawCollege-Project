@@ -80,7 +80,7 @@ const ExamAdmission = () => {
         );
         setAdmission((await responseAdmission).data);
       } else if ((await responseIndexInt).data) {
-        setIndexNo((await responseIndexPre).data.IndexNo);
+        setIndexNo((await responseIndexInt).data.IndexNo);
         setIntermidiateExam(true);
         const responseAdmission = axios.get(
           `http://localhost:3001/Intermidiate_Exam_IndexNo/${indexNo}`,

@@ -1,0 +1,50 @@
+
+.bg {
+    background-image: url('../../../../../../Assests/slider1.jpg');
+    height: 45%;
+    margin-top: 0px;
+    max-height: 500px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  
+  .caption {
+    margin-top: 25px;
+    font-family: 'Lora';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 40px;
+    line-height: 59px;
+    color: rgba(240, 248, 255, 0.966);
+    display: flex;
+    align-items: center;
+    text-align: center;
+  }
+  
+  @media (max-width: 600px) {
+    .caption{
+      font-size: 20px;
+      line-height: 40px;
+      padding-top: 80px;
+      padding-left: 27vw;
+    }
+    .bg{
+      margin-top: -30px;
+      height:200px;
+    }
+  }
+  
+  @media (max-width: 992px) {
+    .caption{
+      font-size: 20px;
+      line-height: 40px;
+      padding-top: 80px;
+      padding-left: 30vw;
+    }
+    .bg{
+      margin-top: -30px;
+      height:200px;
+    }
+  }
+  

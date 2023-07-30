@@ -136,7 +136,9 @@ const Sidebar = () => {
     {
       label: 'Current Progress',
       link: '#',
-      subMenuItems: [],
+      subMenuItems: [
+        { label: 'View', link: '/CurrentStudent/CurrentProgress' },
+      ],
     },
     {
       label: 'Apprenticeship Registration',

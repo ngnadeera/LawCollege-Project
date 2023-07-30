@@ -14,6 +14,7 @@ import Sidebar from '../../Sidebar';
 import { boxStyles } from '../../../../../../Pages/Registration/GeneralApplicant/Cmp/BoxStyles';
 import TextField from '@mui/material/TextField';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const ExamWithdrawal = () => {
   const breadcrumbLinks = [
@@ -32,7 +33,7 @@ const ExamWithdrawal = () => {
   const [withdrawalOpen,setWithdrawalOpen] = useState(false);
   const [dataExist,setDataExist] = useState(false);
   
-
+  const navigate = useNavigate();
   const handleDialogOpen = () => {
     setDialogOpen(true);
   };
@@ -61,8 +62,6 @@ const ExamWithdrawal = () => {
                 setWithdrawalOpen(false);
             }
         }
-
-       
 
         const responseIndexPre = axios.get(
             "http://localhost:3001/Preliminary_Exam_IndexNo/user",
@@ -114,10 +113,28 @@ const ExamWithdrawal = () => {
                 setNotEligible(true)
           }
 
+      
+
+
     }
 
     fetchData()
   }, [indexNo])
+
+  // useEffect (async() => {
+
+  //   if (indexNo){
+  //     const responseExist = axios.get(`http://localhost:3001/Exam_Withdrawal/${indexNo}`, {
+  //       headers: {
+  //         accessToken: localStorage.getItem("accessToken"),
+  //       },
+  //     });
+  //     setDataExist(true)
+
+  //   }
+  // },[indexNo])
+
+
 
   const exam = preliminaryExam
   ? "Preliminary Exam"
@@ -156,6 +173,27 @@ const ExamWithdrawal = () => {
               },
             }
           );
+
+          const responsetoUpdate = await axios.get('http://localhost:3001/Student_Status/user',
+          {
+            headers: {
+              accessToken: localStorage.getItem("accessToken"),
+            },
+          })
+          const IntAttempts = responsetoUpdate.data.IntAttempts;
+          const updatedIntAttempts = IntAttempts - 1;
+
+          const responseUpdate = await axios.put('http://localhost:3001/Student_Status/user',{
+            IntAttempts: updatedIntAttempts
+          },
+          {
+            headers: {
+              accessToken: localStorage.getItem("accessToken"),
+            },
+          })
+
+
+
     }
 
     if (preliminaryExam){
@@ -167,6 +205,24 @@ const ExamWithdrawal = () => {
               },
             }
           );
+
+          const responsetoUpdate = await axios.get('http://localhost:3001/Student_Status/user',
+          {
+            headers: {
+              accessToken: localStorage.getItem("accessToken"),
+            },
+          })
+          const PreAttempts = responsetoUpdate.data.PreAttempts;
+          const updatedPreAttempts = PreAttempts - 1;
+
+          const responseUpdate = await axios.put('http://localhost:3001/Student_Status/user',{
+            PreAttempts: updatedPreAttempts
+          },
+          {
+            headers: {
+              accessToken: localStorage.getItem("accessToken"),
+            },
+          })
     }
 
     if (finalExam){
@@ -178,14 +234,34 @@ const ExamWithdrawal = () => {
               },
             }
           );
+
+          const responsetoUpdate = await axios.get('http://localhost:3001/Student_Status/user',
+          {
+            headers: {
+              accessToken: localStorage.getItem("accessToken"),
+            },
+          })
+          const FinalAttempts = responsetoUpdate.data.FinalAttempts;
+          const updatedFinalAttempts = FinalAttempts - 1;
+
+          const responseUpdate = await axios.put('http://localhost:3001/Student_Status/user',{
+            FinalAttempts: updatedFinalAttempts
+          },
+          {
+            headers: {
+              accessToken: localStorage.getItem("accessToken"),
+            },
+          })
     }
 
-      alert("submitted")
+    navigate('/CurrentStudent')
+
+
 
   };
 
   
-console.log(dataExist)
+
   return (
     <div>
       <StylesProvider injectFirst>
@@ -225,8 +301,10 @@ console.log(dataExist)
 
                     {!withdrawalOpen ? (
                         <div><Typography>Exam Withdrawal has been Closed...</Typography> </div>
-                    ) : (
-                        <>
+                    ) : ( 
+                      !dataExist ? (
+                          <>
+
                         
                         <Formik
                     initialValues={{
@@ -289,12 +367,15 @@ console.log(dataExist)
                         </div>
                       </Form>
                     )}
-                  </Formik>
-                        
-                        
-                        
-                        
+                        </Formik>
+                      
                         </>
+                      ) : (
+                        <>
+                        <Typography>You have already submitted an Exam withdrawal for the ongoing exam..</Typography>
+                        </>
+                      )
+                        
                     ) }
                  
                 </Box>
