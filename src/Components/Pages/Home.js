@@ -32,6 +32,10 @@ import Courses from "./SubPages/Courses/Courses";
 import Curriculum from "./SubPages/Curriculum/Curriculum";
 import LectureRegistration from "../Inc/CurrentStudent/CurrentStudentProfile/Cmp/LectureRegistration/LectureRegistration";
 import ExamRegistration from "../Inc/CurrentStudent/CurrentStudentProfile/Cmp/ExamRegistration/ExamRegistration";
+import ExamAdmission from "../Inc/CurrentStudent/CurrentStudentProfile/Cmp/ExamRegistration/ExamAdmission/ExamAdmission";
+import ExamResults from "../Inc/CurrentStudent/CurrentStudentProfile/Cmp/ExamResults/ExamResults";
+import PreviousExamResults from "../Inc/CurrentStudent/CurrentStudentProfile/Cmp/ExamRegistration/PreviousExamResults/PreviousexamResults";
+import ExamWithdrawal from "../Inc/CurrentStudent/CurrentStudentProfile/Cmp/ExamRegistration/ExamWithdraw/ExamWithdrawal";
 
 const Home = () => {
   const [authState, setAuthState] = useState(false);
@@ -128,6 +132,25 @@ const Home = () => {
             element={authState ? <ExamRegistration /> : <CurrentStudent />}
           />
 
+        <Route
+            path="/CurrentStudent/Admission"
+            element={authState ? <ExamAdmission /> : <CurrentStudent />}
+          />
+
+        <Route
+            path="/CurrentStudent/ExamResults"
+            element={authState ? < ExamResults/> : <CurrentStudent />}
+          />
+
+          <Route
+            path="/CurrentStudent/PreviousExamResults"
+            element={authState ? <PreviousExamResults/> : <CurrentStudent />}
+          />  
+
+           <Route
+            path="/CurrentStudent/ExamWithdrawal"
+            element={authState ? <ExamWithdrawal/> : <CurrentStudent />}
+          /> 
 
 
           <Route path="/Staff" element={<Staff />} />

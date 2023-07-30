@@ -120,6 +120,7 @@ const Sidebar = () => {
       link: '#',
       subMenuItems: [
         { label: 'Registration', link: '/CurrentStudent/ExamRegistration' },
+        { label: 'Exam Admission', link: '/CurrentStudent/Admission' },
         { label: 'Exam Withdrawal', link: '/CurrentStudent/ExamWithdrawal' },
         { label: 'Exam Medicals', link: '/CurrentStudent/ExamMedicals' },
       ],
@@ -127,7 +128,10 @@ const Sidebar = () => {
     {
       label: 'Exam Results',
       link: '#',
-      subMenuItems: [],
+      subMenuItems: [
+        { label: 'Ongoing Exam Results', link: '/CurrentStudent/ExamResults' },
+        { label: 'Previous Exam Results', link: '/CurrentStudent/PreviousExamResults' },
+      ],
     },
     {
       label: 'Current Progress',

@@ -1,0 +1,16 @@
+.resultBox {
+    display: flex;
+    width: 250px;
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 9px;
+    border: 2px solid #CCC;
+    background: #FFF;
+    margin-left: 10px;
+  }
+
+  td {
+    font-size: '20px';
+  }

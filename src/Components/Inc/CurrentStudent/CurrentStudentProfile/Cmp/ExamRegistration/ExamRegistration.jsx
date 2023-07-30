@@ -28,6 +28,7 @@ import PreliminaryExamRegistrationForm from './PreliminaryExamRegistrationForm';
 import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
 import './ExamRegistration.css'
+import IntermidiateExamRegistrationForm from './IntermidiateExamRegistrationForm';
 
 
 const ExamRegistration = () => {
@@ -248,13 +249,53 @@ for (let i = 0; i < checkboxpre.length; i++) {
     )
   }
 }
-        
-        
+    } else if (intermediateExamReg){
+      const postresponseInt = await axios.post(
+        "http://localhost:3001/Intermidiate_Exam_Regisration/",
+        {
+          Month:examcallData.Month,
+          Year: examcallData.Year,
+          ReferenceNumber: "REG 200002701840",
+          BankName: values.paymentType,
+          BranchName: values.branchName,
+          TypeOfPayment: values.bank,
+          DateOfPayment: values.paymentDate,
+        },
+        {
+          headers: {
+            accessToken: localStorage.getItem("accessToken"),
+          },
+        } 
+      )
 
+      const ApplicantId = postresponseInt.data.AppID;
+
+      const checkboxpre = [values.checkbox1,values.checkbox2,values.checkbox3,values.checkbox4,values.checkbox5,values.checkbox6,values.checkbox7,values.checkbox8,values.checkbox9,values.checkbox10]
+      const subjectspre = ['LW 201','LW 202' ,'LW 203','LW 204','LW 205','LW 206','LW 210','LW 109','LW 207','LW 208']
+      const mediumpre = [values.subject1, values.subject2 ,values.subject3,values.subject4,'english',values.subject6,values.subject7,values.subject8,values.subject9,values.subject10]
+
+      for (let i = 0; i < checkboxpre.length; i++) {
+        if(checkboxpre[i]){
+      
+          const postResponsePreSubjects = await axios.post(
+            "http://localhost:3001/Intermidiate_Exam_Selected_Subjects/",
+            {
+              AppID:ApplicantId,
+              SubjectID:subjectspre[i],
+              Medium: mediumpre[i]
+            },
+            {
+              headers: {
+                accessToken: localStorage.getItem("accessToken"),
+              },
+            } 
+          )
+        }
+      }
     }
 
 
-console.log(values);
+
   }
    
 })
@@ -334,8 +375,12 @@ console.log(values);
                             <>
                               {!intExamRegistred ? (
                                 <>
-                                  <Chip label="Intermediate year exam registration" />
-                                  {/* form */}
+                                <Chip label="Intermediate year exam registration" />
+                                  <form onSubmit={formik.handleSubmit}>
+                                  <IntermidiateExamRegistrationForm formik={formik} />
+                                  <Button type='submit'>submit</Button>
+                                  </form>
+                               
                                  
                                 </>
                               ) : (
@@ -345,7 +390,7 @@ console.log(values);
                                     You have already been registered for tde
                                     Intermediate year Exams: {
                                       examCall.Year
-                                    } - {examCall.Montd}{" "}
+                                    } - {examCall.Month}{" "}
                                   </p>
                                 </div>
                               )}
@@ -358,6 +403,10 @@ console.log(values);
                                 <>
                                   <Chip label="Final year exam registration" />
                                   {/* form */}
+                                  <form onSubmit={formik.handleSubmit}>
+                                  <IntermidiateExamRegistrationForm formik={formik} />
+                                  <Button type='submit'>submit</Button>
+                                  </form>
                                
                                 </>
                               ) : (
