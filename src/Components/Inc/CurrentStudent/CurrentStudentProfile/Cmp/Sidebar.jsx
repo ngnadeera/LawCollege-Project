@@ -143,7 +143,9 @@ const Sidebar = () => {
     {
       label: 'Apprenticeship Registration',
       link: '#',
-      subMenuItems: [],
+      subMenuItems: [
+        { label: 'Registration', link: '/CurrentStudent/ApprenticeshipRegistration' },
+      ],
     },
     // Add more navigation items as needed
   ];

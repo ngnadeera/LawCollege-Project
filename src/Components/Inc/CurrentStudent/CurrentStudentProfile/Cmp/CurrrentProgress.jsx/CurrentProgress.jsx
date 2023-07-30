@@ -6,9 +6,9 @@ import { Button, Container } from "react-bootstrap";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import {  StylesProvider } from "@material-ui/core";
-import axios from 'axios';
-import { useEffect,useState } from 'react';
+
 import Sidebar from '../Sidebar';
+
 
 import Breadcrumbs from '@mui/material/Breadcrumbs';
 import Link from '@mui/material/Link';
@@ -16,8 +16,10 @@ import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import { boxStyles } from '../../../../../Pages/Registration/GeneralApplicant/Cmp/BoxStyles';
 import { Box, Typography, Checkbox, Dialog, DialogTitle, DialogContent, DialogActions, Chip } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
-import { Formik, Form } from 'formik';
-import TextField from '@mui/material/TextField';
+
+
+
+import ColorsTimeline from './ColorsTimeline';
 
 
 
@@ -69,10 +71,26 @@ const CurrentProgress = () => {
                 <Col md={{ span: 2 }}>
                   <Sidebar />
                 </Col>
-                <Col style={{ paddingLeft:'90px'}}md={{ span: 10,}}>
+                <Col style={{ paddingLeft:'40px'}}md={{ span: 10,}}>
 
-Hello
+
                   {/* Main container */}
+                  <Box style={boxStyles}>
+                  <Container fluid style={{marginTop:'50px'}}>
+                    <Row >
+                      <Col className='d-flex align-content-center justify-content-center'>
+                      <Typography style={{color:'rgba(41, 43, 44, 0.75)', fontSize:'30px'}}><b>Progress Timeline</b></Typography>
+                      </Col>
+                    </Row>
+                    <Row>
+                      <Col md={{span:12}} style={{marginTop:'30px'}}>
+                        <ColorsTimeline/>
+                      </Col>
+                    </Row>
+                  
+                  </Container>
+
+                  </Box>
 
                   
                 </Col>
