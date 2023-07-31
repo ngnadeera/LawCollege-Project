@@ -77,7 +77,8 @@ export const step3Validation = Yup.object().shape({
     message: "Subject 1 is required",
   }),
   
-   grading1: Yup.string().test({
+  grading1: Yup.string()
+  .test({
     test: function (value) {
       const schemaFieldValue = this.resolve(Yup.ref("schema"));
       if (schemaFieldValue === "new" || schemaFieldValue === "old") {
@@ -85,7 +86,21 @@ export const step3Validation = Yup.object().shape({
       }
       return true;
     },
-    message: "Grading 1 is required",
+    message: "Grading is required",
+  })
+  .test({
+    test: function (value) {
+      // Allow only specific letters "A", "B", "C", or "S"
+      return /^[ABC]|S$/i.test(value);
+    },
+    message: "Grading must be 'A', 'B', 'C', or 'S'",
+  })
+  .test({
+    test: function (value) {
+      // Allow only one letter (e.g., "A", "B", etc.)
+      return /^[A-Za-z]{1}$/.test(value);
+    },
+    message: "Grading must be a single letter",
   }),
 
     
@@ -111,7 +126,8 @@ export const step3Validation = Yup.object().shape({
     message: "Subject 2 is required",
   }),
   
-   grading2 : Yup.string().test({
+  grading2: Yup.string()
+  .test({
     test: function (value) {
       const schemaFieldValue = this.resolve(Yup.ref("schema"));
       if (schemaFieldValue === "new" || schemaFieldValue === "old") {
@@ -119,7 +135,21 @@ export const step3Validation = Yup.object().shape({
       }
       return true;
     },
-    message: "Grading 2 is required",
+    message: "Grading is required",
+  })
+  .test({
+    test: function (value) {
+      // Allow only specific letters "A", "B", "C", or "S"
+      return /^[ABC]|S$/i.test(value);
+    },
+    message: "Grading must be 'A', 'B', 'C', or 'S'",
+  })
+  .test({
+    test: function (value) {
+      // Allow only one letter (e.g., "A", "B", etc.)
+      return /^[A-Za-z]{1}$/.test(value);
+    },
+    message: "Grading must be a single letter",
   }),
   
    subjectNumber3 : Yup.number().test({
@@ -144,7 +174,8 @@ export const step3Validation = Yup.object().shape({
     message: "Subject 3 is required",
   }),
   
-   grading3 : Yup.string().test({
+  grading3: Yup.string()
+  .test({
     test: function (value) {
       const schemaFieldValue = this.resolve(Yup.ref("schema"));
       if (schemaFieldValue === "new" || schemaFieldValue === "old") {
@@ -152,7 +183,21 @@ export const step3Validation = Yup.object().shape({
       }
       return true;
     },
-    message: "Grading 3 is required",
+    message: "Grading is required",
+  })
+  .test({
+    test: function (value) {
+      // Allow only specific letters "A", "B", "C", or "S"
+      return /^[ABC]|S$/i.test(value);
+    },
+    message: "Grading must be 'A', 'B', 'C', or 'S'",
+  })
+  .test({
+    test: function (value) {
+      // Allow only one letter (e.g., "A", "B", etc.)
+      return /^[A-Za-z]{1}$/.test(value);
+    },
+    message: "Grading must be a single letter",
   }),
 
   subjectNumber4 : Yup.number().test({
@@ -187,6 +232,9 @@ export const step3Validation = Yup.object().shape({
     },
     message: "Grading 4 is required",
   }),
+  
+
+
   
 
   

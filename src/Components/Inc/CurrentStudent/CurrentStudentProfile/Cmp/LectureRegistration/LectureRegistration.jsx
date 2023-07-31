@@ -16,6 +16,9 @@ import { boxStyles } from '../../../../../Pages/Registration/GeneralApplicant/Cm
 import {Box} from '@mui/material';
 import { useFormik } from "formik";
 import Preliminary_lecture_regisrations from './Preliminary_lecture_regisrations'
+import Snackbar from '@mui/material/Snackbar';
+import MuiAlert from '@mui/material/Alert';
+
 
 const LectureRegistration = () => {
 
@@ -41,6 +44,16 @@ const LectureRegistration = () => {
       const [intermediateLecRegistred,setIntermediateLecRegistred] = useState(false);
       const [FinalYearRegistred,setFinalYearRegistred] = useState(false);
 
+      const [isSnackbarOpen, setIsSnackbarOpen] = useState(false);
+
+      const handleSnackbarClose = (event, reason) => {
+        if (reason === 'clickaway') {
+          return;
+        }
+      
+        setIsSnackbarOpen(false);
+      };
+      
 
       // registration call
       const [registrationCall, setRegistrationCall] = useState(true);
@@ -225,7 +238,8 @@ const LectureRegistration = () => {
               );
             }
                     
-
+    setIsSnackbarOpen(true);
+    window.location.reload();
 
       }catch {
 
@@ -289,6 +303,7 @@ const LectureRegistration = () => {
                               {!preliminaryLecRegistred ? (
                                 <>
                                   <Chip label="Preliminary Year" />
+                                  <Typography style={{marginLeft:'10px',marginTop:'20px'}}>Ref No: 200002401840</Typography>
                                   <form onSubmit={formik.handleSubmit}>
                                   <Preliminary_lecture_regisrations
                                     formik={formik}
@@ -380,6 +395,14 @@ const LectureRegistration = () => {
           <Footer />
         </div>
       </StylesProvider>
+
+
+<Snackbar open={isSnackbarOpen} autoHideDuration={6000} onClose={handleSnackbarClose}>
+  <MuiAlert elevation={6} variant="filled" onClose={handleSnackbarClose} severity="success">
+    Successfully Registered!
+  </MuiAlert>
+</Snackbar>
+
     </div>
   );
 }

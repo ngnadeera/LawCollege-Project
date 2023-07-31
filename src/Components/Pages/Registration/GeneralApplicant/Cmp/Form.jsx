@@ -34,6 +34,7 @@ import { step3Validation } from "../../Schemas/GEARegistraion/step3Validation";
 import Step3 from "./FormComponents/Step3";
 import Step4 from "./FormComponents/Step4";
 import Container from "react-bootstrap/esm/Container";
+import { step4Validation } from "../../Schemas/GEARegistraion/step4Validation";
 
 // Step 1 validation schema
  
@@ -51,15 +52,10 @@ const step1ValidationSchema = step1Validation;
 const step2ValidationSchema = step2Validation;
 
 // Step 3 validation schema
-const step3ValidationSchema = step3Validation
+const step3ValidationSchema = step3Validation;
 
 // Step 4 validation schema
-const step4ValidationSchema = Yup.object().shape({
-  agreeTerms: Yup.bool().oneOf(
-    [true],
-    "You must agree to the terms and conditions"
-  ),
-});
+const step4ValidationSchema = step4Validation;
 
 const steps = [
   {  validationSchema: step1ValidationSchema },

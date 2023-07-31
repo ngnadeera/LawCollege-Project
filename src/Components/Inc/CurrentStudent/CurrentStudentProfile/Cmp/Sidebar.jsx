@@ -137,7 +137,8 @@ const Sidebar = () => {
       label: 'Current Progress',
       link: '#',
       subMenuItems: [
-        { label: 'View', link: '/CurrentStudent/CurrentProgress' },
+        { label: 'Progress Timeline', link: '/CurrentStudent/CurrentProgress' },
+        { label: 'Academic Analysis', link: '/CurrentStudent/AcademicAnalysis' },
       ],
     },
     {
@@ -145,6 +146,7 @@ const Sidebar = () => {
       link: '#',
       subMenuItems: [
         { label: 'Registration', link: '/CurrentStudent/ApprenticeshipRegistration' },
+        { label: 'Apprenticeship Status', link: '/CurrentStudent/ApprenticeshipResults' },
       ],
     },
     // Add more navigation items as needed

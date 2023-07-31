@@ -29,7 +29,7 @@ import {FormControlLabel,FormGroup,Select,MenuItem,FormHelperText,Radio,Alert} f
 import Snackbar from "@mui/material/Snackbar";
 import MuiAlert from "@mui/material/Alert";
 import HowToRegRoundedIcon from '@mui/icons-material/HowToRegRounded';
-
+import defaultImage from './defaultImage.jpg'
 
 
 const StyledInput = styled("input")({
@@ -46,7 +46,7 @@ const Profile = () => {
   const [uploading, setUploading] = useState(false);
   const [studentId, setStudentId] = useState(null);
   const [EditProfile, setEditProfile] = useState(false);
-  const [imageUrl, setImageUrl] = useState();
+  const [imageUrl, setImageUrl] = useState('');
   const [userId,setUserId] = useState(null);
   const [student,setStudent] = useState([]);
   const [isSnackbarOpen, setIsSnackbarOpen] = useState(false);
@@ -69,7 +69,9 @@ const Profile = () => {
         getDownloadURL(imageRef)
           .then((url) => {
             setImageUrl(url);
-          })
+          }).catch((error) => {
+            setImageUrl('');
+          });
       })
       .catch((error) => {
         console.log(error);
@@ -84,7 +86,7 @@ useEffect(() =>{
         accessToken: localStorage.getItem("accessToken"),
       },
     }).then((response) => {
-      console.log(response.data)
+     
       setStudent(response.data)
       
     }).catch((e)=> {
@@ -186,7 +188,7 @@ useEffect(() => {
         setImage(null);
       })
       .catch((error) => {
-        console.log(error.message);
+        console.log("error");
         setUploading(false);
       });
   };

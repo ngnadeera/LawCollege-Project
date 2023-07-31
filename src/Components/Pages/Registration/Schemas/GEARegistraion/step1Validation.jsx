@@ -8,29 +8,27 @@ const checkboxerrormessage =
 
 
 export const step1Validation = Yup.object().shape({
-    // checkbox1: Yup.bool().oneOf([true], checkboxerrormessage),
-    // checkbox2: Yup.bool().oneOf([true], checkboxerrormessage),
-    // checkbox3: Yup.bool().oneOf([true], checkboxerrormessage),
-    // checkbox4: Yup.bool().oneOf([true], checkboxerrormessage),
-    // checkbox5: Yup.bool().oneOf([true], checkboxerrormessage),
-    // checkbox6: Yup.bool().oneOf([true], checkboxerrormessage),
-    // checkbox7: Yup.bool().oneOf([true], checkboxerrormessage),
-    // checkbox8: Yup.bool().oneOf([true], checkboxerrormessage),
-    // namei: Yup.string().required("Name with initials is required"),
-    //  nid: Yup.string().required('ID Card Number is Required')
-    // .test('is-valid-id', 'Invalid ID Card number', (value) => {
-    //   const isOldFormat = /^[0-9]{9}[vV]$/.test(value)
-    //   const isNewFormat = /^[0-9]{12}$/.test(value)
-    //   return isOldFormat || isNewFormat;
-    // })
-    // .test('unique-nic', nicDuplicateErrorMessage, async (value) => {
-    //   try {
-    //     const response = await axios.post('/check-unique-nic', { NIC: value });
-    //     return response.data.isUnique;
-    //   } catch (error) {
-    //     console.error('Error checking uniqueness:', error);
-    //     return false;
-    //   }
-    // }),
+    checkbox1: Yup.bool().oneOf([true], checkboxerrormessage),
+    checkbox2: Yup.bool().oneOf([true], checkboxerrormessage),
+    checkbox3: Yup.bool().oneOf([true], checkboxerrormessage),
+    checkbox4: Yup.bool().oneOf([true], checkboxerrormessage),
+    checkbox5: Yup.bool().oneOf([true], checkboxerrormessage),
+    checkbox6: Yup.bool().oneOf([true], checkboxerrormessage),
+    checkbox7: Yup.bool().oneOf([true], checkboxerrormessage),
+    checkbox8: Yup.bool().oneOf([true], checkboxerrormessage),
+    namei: Yup.string().required("Name with initials is required").max(50, "Name with initials must be at most 50 characters"),
+
+    nid: Yup.string()
+    .required('ID Card Number is Required')
+    .test('is-nid-valid', 'Invalid NIC Number', (value) => {
+      // First type: "349358718V" or "585958489v" (9 numerics and one "v" or "V")
+      const nidType1Regex = /^[0-9]{9}[Vv]$/;
+      
+      // Second type: "2345894534" (ten numerics)
+      const nidType2Regex = /^[0-9]{10}$/;
+
+      return nidType1Regex.test(value) || nidType2Regex.test(value);
+    }),
+    
   });
   

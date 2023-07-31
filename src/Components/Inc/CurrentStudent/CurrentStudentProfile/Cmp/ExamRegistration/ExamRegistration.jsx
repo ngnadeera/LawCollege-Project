@@ -30,6 +30,10 @@ import MenuItem from '@mui/material/MenuItem';
 import './ExamRegistration.css'
 import IntermidiateExamRegistrationForm from './IntermidiateExamRegistrationForm';
 
+import Snackbar from '@mui/material/Snackbar';
+import MuiAlert from '@mui/material/Alert';
+
+
 
 const ExamRegistration = () => {
 
@@ -42,6 +46,8 @@ const ExamRegistration = () => {
       const [studentData, setStudentData] = useState(null);
       const [loading, setLoading] = useState(true);
       const [error, setError] = useState(null);
+      const [isSnackbarOpen, setIsSnackbarOpen] = useState(false);
+
 
       const[preliminaryExamReg, setPreliminaryExamReg] = useState(false);
       const[intermediateExamReg, setIntermediateExamReg] = useState(false);
@@ -57,7 +63,14 @@ const ExamRegistration = () => {
 
       const [examcallData,setExamCallData] = useState(null);
   
-     
+      const handleSnackbarClose = (event, reason) => {
+        if (reason === 'clickaway') {
+          return;
+        }
+      
+        setIsSnackbarOpen(false);
+      };
+      
       
 
 
@@ -131,6 +144,7 @@ const ExamRegistration = () => {
             }
 
             setLoading(false); // Set loading to false as tde data is fetched
+        
           } catch (error) {
             // If an error occurred during tde fetch or tde student data was not found (404), handle tde error here
             setError(error.message);
@@ -295,7 +309,8 @@ for (let i = 0; i < checkboxpre.length; i++) {
     }
 
 
-
+    setIsSnackbarOpen(true);
+            window.location.reload();
   }
    
 })
@@ -442,6 +457,15 @@ for (let i = 0; i < checkboxpre.length; i++) {
           <Footer />
         </div>
       </StylesProvider>
+
+
+
+<Snackbar open={isSnackbarOpen} autoHideDuration={6000} onClose={handleSnackbarClose}>
+  <MuiAlert elevation={6} variant="filled" onClose={handleSnackbarClose} severity="success">
+    Successfully Registered!
+  </MuiAlert>
+</Snackbar>
+
     </div>
   );
 }

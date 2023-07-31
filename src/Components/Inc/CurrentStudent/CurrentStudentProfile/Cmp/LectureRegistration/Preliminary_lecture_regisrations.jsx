@@ -26,7 +26,7 @@ import Row from "react-bootstrap/esm/Row";
 import Col from "react-bootstrap/Col";
 
 const Preliminary_lecture_regisrations = ({formik}) => {
-    const fee = 6000;
+    const fee = 2000;
     return (
       <>
 

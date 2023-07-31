@@ -39,6 +39,9 @@ import ExamWithdrawal from "../Inc/CurrentStudent/CurrentStudentProfile/Cmp/Exam
 import ExamMedical from "../Inc/CurrentStudent/CurrentStudentProfile/Cmp/ExamRegistration/ExamMedicals/ExamMedical";
 import CurrentProgress from "../Inc/CurrentStudent/CurrentStudentProfile/Cmp/CurrrentProgress.jsx/CurrentProgress";
 import ApprenticeshipRegistration from "../Inc/CurrentStudent/CurrentStudentProfile/ApprenticeshipRegistration/ApprenticeshipRegistration";
+import ExamResultAnalysis from "../Inc/CurrentStudent/CurrentStudentProfile/Cmp/CurrrentProgress.jsx/ExamResultAnalysis";
+import ApplicationStatus from "./Registration/ApplicantInterface/cmp/ApplicationStatus/ApplicationStatus";
+import ApprenticeshipStatus from "../Inc/CurrentStudent/CurrentStudentProfile/ApprenticeshipRegistration/ApprenticeshipStatus";
 
 const Home = () => {
   const [authState, setAuthState] = useState(false);
@@ -166,8 +169,18 @@ const Home = () => {
           />
 
           <Route
+            path="/CurrentStudent/AcademicAnalysis"
+            element={authState ? <ExamResultAnalysis/>  : <CurrentStudent />}
+          />
+
+          <Route
             path="/CurrentStudent/ApprenticeshipRegistration"
             element={authState ? <ApprenticeshipRegistration/>  : <CurrentStudent />}
+          />
+
+          <Route
+            path="/CurrentStudent/ApprenticeshipResults"
+            element={authState ? <ApprenticeshipStatus/>  : <CurrentStudent />}
           />
 
 

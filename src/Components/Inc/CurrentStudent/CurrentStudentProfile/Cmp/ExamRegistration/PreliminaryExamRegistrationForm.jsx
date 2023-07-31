@@ -27,6 +27,8 @@ import Col from "react-bootstrap/Col";
 import Checkbox from '@mui/material/Checkbox';
 import FormControl from '@mui/material/FormControl';
 import { border } from "@mui/system";
+import Snackbar from '@mui/material/Snackbar';
+
 
 
 
@@ -34,7 +36,7 @@ import { border } from "@mui/system";
 const PreliminaryExamRegistrationForm = ({formik}) => {
 
     
-    const fee = 6000;
+    const fee = 2000;
 
     const medium = [
         { value: 'sinhala', label: 'Sinhala' },
@@ -42,6 +44,7 @@ const PreliminaryExamRegistrationForm = ({formik}) => {
         { value: 'tamil', label: 'Tamil' },
       ];
 
+      const [isSnackbarOpen, setIsSnackbarOpen] = useState(false);
 
       const [selectedCheckbox, setSelectedCheckbox] = useState(null);
 
