@@ -1,0 +1,40 @@
+table {
+  border-collapse: collapse;
+  width: 100%;
+  color: #000000;
+  text-align: left;
+  border-radius: 10px;
+  /* overflow: hidden; */
+  /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); */
+  margin-top: 1%;
+  border: 1px solid #000000;
+  /* table-layout: auto; */
+}
+
+table td {
+  /* background-color: #dfe7ff; */
+  padding: 7px;
+  border: 1px solid black;
+  font-size: 9pt;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.centername {
+  width: 70%;
+}
+
+.align-center {
+  display: flex !important;
+  justify-content: center !important;
+}
+
+.align-right {
+  display: flex !important;
+  justify-content: right !important;
+}
+
+.issueButton {
+  display: flex !important;
+  justify-content: center !important;
+  padding: 50px;
+}

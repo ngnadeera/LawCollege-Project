@@ -53,17 +53,17 @@ useEffect (() => {
 if (studentData){
 
   if (studentData.FinalExamPass){
-    setActiveStep(6);
-  } else if (studentData.FinalYearReg){
     setActiveStep(5);
-  } else if (studentData.IntExamPass){
+  } else if (studentData.FinalYearReg){
     setActiveStep(4);
-  } else if (studentData.IntYearReg){
+  } else if (studentData.IntExamPass){
     setActiveStep(3);
-  } else if (studentData.PreExamPass){
+  } else if (studentData.IntYearReg){
     setActiveStep(2);
-  } else if (studentData.PreYearReg){
+  } else if (studentData.PreExamPass){
     setActiveStep(1);
+  } else if (studentData.PreYearReg){
+    setActiveStep(0);
   } 
 
 }

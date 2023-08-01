@@ -6,6 +6,10 @@ import { Button, Container } from "react-bootstrap";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import {  StylesProvider } from "@material-ui/core";
+import { Tabs, Tab } from '@mui/material';
+
+import { useState } from 'react';
+
 
 import Sidebar from '../Sidebar';
 
@@ -20,11 +24,31 @@ import { useNavigate } from 'react-router-dom';
 import LineChartEx from './Charts/Charts';
 
 
-
-
+const tabStyles = {
+  root: {
+    minWidth: 'auto',
+    borderRadius: '90px', // Adjust the value to control the border radius
+    textTransform: 'none',
+    padding: '10px 16px',
+    marginRight: '10px',
+    '&:focus': {
+      outline: 'none', // Remove the focus outline when clicking on the button
+    },
+  },
+  selected: {
+    color: '#ffffff', // Change this to the desired text color for the selected tab
+    background: '#1976d2', // Change this to the desired background color for the selected tab
+    boxShadow: '0 2px 4px rgba(25, 118, 210, 0.3)', // Add elevation (box shadow) to the selected button
+    '&:hover': {
+      boxShadow: '0 4px 8px rgba(25, 118, 210, 0.3)', // Add elevation on hover (optional)
+    },
+  },
+};
 
 
 const ExamResultAnalysis = () => {
+
+
 
     
     const breadcrumbLinks = [
@@ -33,6 +57,13 @@ const ExamResultAnalysis = () => {
         { label: "Exam Admission", href: "/CurrentStudent/Admission" },
         
       ];
+
+      const [selectedTab, setSelectedTab] = useState(0);
+
+    
+      const handleTabChange = (event, newValue) => {
+        setSelectedTab(newValue);
+      };
 
      
 
@@ -82,8 +113,23 @@ const ExamResultAnalysis = () => {
                       <Col>
                      <Container fluid>
                         <Row style={{marginTop:'30px'}}>
-                            <Col>
+                              <Col>
+                                <Tabs
+                                  value={selectedTab}
+                                  onChange={handleTabChange}
+                                  variant="fullWidth"
+                                  indicatorColor="primary"
+                                  textColor="primary"
+                                  aria-label="dashboard tabs"
+                                >
+                                  <Tab label="Preliminary Year" style={selectedTab === 0 ? tabStyles.selected : tabStyles.root} />
+                                  <Tab label="Intermediate Year" style={selectedTab === 1 ? tabStyles.selected : tabStyles.root} />
+                                  <Tab label="Final Year" style={selectedTab === 2 ? tabStyles.selected : tabStyles.root} />
+                                </Tabs>
+                                <div style={{marginTop:'50px'}}>
                             <LineChartEx/>
+                            <Typography style={{color:'rgba(41, 43, 44, 0.75)', fontSize:'12px', marginLeft:'60px',marginTop:'10px'}}><i>Above chart depicts your results base on the average results that has been scored for each subject</i></Typography>
+                            </div>
                             </Col>
                         </Row>
                        

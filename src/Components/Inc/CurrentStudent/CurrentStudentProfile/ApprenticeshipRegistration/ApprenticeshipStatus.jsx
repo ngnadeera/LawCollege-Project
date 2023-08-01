@@ -128,7 +128,7 @@ const ApprenticeshipStatus = () => {
                      }}
                    >
                      
-                     App results has not yet been released!
+                     Apprenticeship results has not yet been released!
                     
                      </Typography>
                      <p>Please Contact Apprenticeship Department for further details</p>

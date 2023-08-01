@@ -17,14 +17,7 @@ import { boxStyles } from '../../../../../Pages/Registration/GeneralApplicant/Cm
 import { Box, Typography, Checkbox, Dialog, DialogTitle, DialogContent, DialogActions, Chip } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 
-
-
 import ColorsTimeline from './ColorsTimeline';
-
-
-
-
-
 
 
 

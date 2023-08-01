@@ -42,6 +42,7 @@ import ApprenticeshipRegistration from "../Inc/CurrentStudent/CurrentStudentProf
 import ExamResultAnalysis from "../Inc/CurrentStudent/CurrentStudentProfile/Cmp/CurrrentProgress.jsx/ExamResultAnalysis";
 import ApplicationStatus from "./Registration/ApplicantInterface/cmp/ApplicationStatus/ApplicationStatus";
 import ApprenticeshipStatus from "../Inc/CurrentStudent/CurrentStudentProfile/ApprenticeshipRegistration/ApprenticeshipStatus";
+import Transcript from "../Inc/CurrentStudent/CurrentStudentProfile/ApprenticeshipRegistration/Transcript";
 
 const Home = () => {
   const [authState, setAuthState] = useState(false);
@@ -183,6 +184,11 @@ const Home = () => {
             element={authState ? <ApprenticeshipStatus/>  : <CurrentStudent />}
           />
 
+        <Route
+            path="/CurrentStudent/Transcript"
+            element={authState ? <Transcript/>  : <CurrentStudent />}
+          />
+
 
           <Route path="/Staff" element={<Staff />} />
           <Route path="/Unions" element={<Unions />} />
@@ -212,6 +218,7 @@ const Home = () => {
               authStateApplicant ? <GeneralAppRegForm /> : <ApplicantLogin />
             }
           />
+          
 
           <Route
             path="/Applicant_Registration/Edit_Request"
